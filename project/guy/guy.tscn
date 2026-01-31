@@ -4,29 +4,29 @@
 [ext_resource type="Script" uid="uid://b7su6taplbutt" path="res://guy/guy.gd" id="1_o5w3i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ihqf1"]
-size = Vector2(50, 100)
+size = Vector2(32, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tj2cq"]
-size = Vector2(136, 55)
+size = Vector2(64, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5w3i"]
-size = Vector2(136, 50)
+size = Vector2(64, 32)
 
 [node name="Guy" type="CharacterBody2D" unique_id=868721283]
 script = ExtResource("1_o5w3i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1363029511]
-position = Vector2(0, -50)
+position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_ihqf1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2117563986]
-position = Vector2(0, -49.5)
-scale = Vector2(0.390625, 0.7734375)
+position = Vector2(-9.536743e-07, -32)
+scale = Vector2(0.25, 0.5)
 texture = ExtResource("1_8h3iv")
 
 [node name="HorizontalPush" type="Area2D" parent="." unique_id=309215542]
 unique_name_in_owner = true
-position = Vector2(95, -52)
+position = Vector2(49, -31)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HorizontalPush" unique_id=1941479127]
 shape = SubResource("RectangleShape2D_tj2cq")
@@ -34,7 +34,7 @@ metadata/_edit_lock_ = true
 
 [node name="JumpingPush" type="Area2D" parent="." unique_id=853626814]
 unique_name_in_owner = true
-position = Vector2(76.00001, 7.0000033)
+position = Vector2(35.999992, 2.999998)
 rotation = 0.6981317
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JumpingPush" unique_id=1697867517]
@@ -42,8 +42,8 @@ shape = SubResource("RectangleShape2D_o5w3i")
 metadata/_edit_lock_ = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=437205413]
-position = Vector2(0, -50)
-rect = Rect2(-24, -50, 49, 100)
+position = Vector2(-61, -31)
+rect = Rect2(45, -33, 32, 63)
 
 [connection signal="body_entered" from="HorizontalPush" to="." method="_on_horizontal_push_body_entered"]
 [connection signal="body_entered" from="JumpingPush" to="." method="_on_jumping_push_body_entered"]
