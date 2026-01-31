@@ -8,6 +8,8 @@ const JUMP_VELOCITY = -400.0
 ## If zero, I am not being pushed
 var push_vector := Vector2.ZERO
 
+@onready var _horizontal_push_center_x : float = %HorizontalPush.position.x
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -28,6 +30,7 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 
 		%HorizontalPush.monitoring = Input.is_action_pressed("p%d_action" % player_number)
+		%HorizontalPush.position.x = _horizontal_push_center_x * (-1 if direction < 0 else 1)
 	else:
 		velocity.x = push_vector.x * SPEED
 

@@ -23,9 +23,9 @@ texture = ExtResource("1_8h3iv")
 
 [node name="HorizontalPush" type="Area2D" parent="." unique_id=309215542]
 unique_name_in_owner = true
+position = Vector2(95, -52)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HorizontalPush" unique_id=1941479127]
-position = Vector2(94, -48)
 shape = SubResource("RectangleShape2D_tj2cq")
 
 [connection signal="body_entered" from="HorizontalPush" to="." method="_on_horizontal_push_body_entered"]
