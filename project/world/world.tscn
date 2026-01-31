@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://ya0xbplcljk6" path="res://world/world.gd" id="1_fj7yv"]
 [ext_resource type="Shader" uid="uid://bypkvebwkw7mj" path="res://world/background.gdshader" id="3_h5o24"]
 [ext_resource type="Texture2D" uid="uid://42pveew777ho" path="res://world/tile_mexican.png" id="4_h5o24"]
+[ext_resource type="AudioStream" uid="uid://dggvakuker1ij" path="res://world/player_die.wav" id="5_mmdvd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mmdvd"]
 shader = ExtResource("3_h5o24")
@@ -92,3 +93,7 @@ horizontal_alignment = 1
 [node name="ReplayTimer" type="Timer" parent="." unique_id=1194849527]
 process_mode = 3
 wait_time = 5.0
+
+[node name="PlayerDiedSound" type="AudioStreamPlayer" parent="." unique_id=1063837578]
+unique_name_in_owner = true
+stream = ExtResource("5_mmdvd")

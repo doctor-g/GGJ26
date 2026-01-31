@@ -74,6 +74,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		# Handle jump.
 		if Input.is_action_just_pressed("p%d_jump" % player_index) and is_on_floor():
+			%JumpSound.play()
 			_body_sprite.play(&"jump")
 			velocity.y = JUMP_VELOCITY
 			
@@ -130,6 +131,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _push(target:Guy) -> void:
+	%HitSound.play()
 	target.stunned = true
 	if _facing==Facing.LEFT:
 		target.velocity.x = -PUSH_STRENGTH

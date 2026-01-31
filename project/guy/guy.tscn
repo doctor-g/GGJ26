@@ -5,12 +5,14 @@
 [ext_resource type="Shader" uid="uid://bn521wm6yugko" path="res://guy/body.gdshader" id="3_jtfwu"]
 [ext_resource type="Texture2D" uid="uid://cqugpn8tpq047" path="res://guy/mask_luchador.png" id="4_jtfwu"]
 [ext_resource type="Texture2D" uid="uid://d1lay4siy7s15" path="res://guy/guy_attack.png" id="5_a17s0"]
+[ext_resource type="AudioStream" uid="uid://b1p31ndf0sco2" path="res://guy/player_jump.wav" id="6_87sjq"]
+[ext_resource type="AudioStream" uid="uid://ngykwj27vw7p" path="res://guy/player_hit.wav" id="7_6ukov"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jtfwu"]
 radius = 15.0
 height = 64.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_87sjq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kijpv"]
 resource_local_to_scene = true
 shader = ExtResource("3_jtfwu")
 shader_parameter/origin = Color(1, 1, 1, 1)
@@ -88,7 +90,7 @@ shape = SubResource("CapsuleShape2D_jtfwu")
 
 [node name="BodySprite" parent="." unique_id=324161803 instance=ExtResource("2_vupqh")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_87sjq")
+material = SubResource("ShaderMaterial_kijpv")
 position = Vector2(0, -20)
 
 [node name="HeadSprite" type="Sprite2D" parent="." unique_id=2117563986]
@@ -132,6 +134,14 @@ frame_progress = 1.0
 [node name="PushCooldown" type="Timer" parent="." unique_id=1346349694]
 unique_name_in_owner = true
 wait_time = 0.3
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="." unique_id=1383953600]
+unique_name_in_owner = true
+stream = ExtResource("6_87sjq")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=1519663803]
+unique_name_in_owner = true
+stream = ExtResource("7_6ukov")
 
 [connection signal="animation_finished" from="HorizontalPush/Visual" to="." method="_on_visual_animation_finished"]
 [connection signal="animation_finished" from="JumpingPush/Visual" to="." method="_on_visual_animation_finished"]

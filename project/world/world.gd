@@ -37,6 +37,7 @@ func _spawn_guy(index:int) -> void:
 	add_child(guy)
 	
 	guy.died.connect(func():
+		%PlayerDiedSound.play()
 		guy.queue_free()
 		_players[index].lives -= 1
 		if _players[index].lives > 0:
