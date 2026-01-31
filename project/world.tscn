@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dms4hsr1b1uh1"]
+
+[ext_resource type="PackedScene" uid="uid://bchk8uca8q32o" path="res://guy.tscn" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://ya0xbplcljk6" path="res://world.gd" id="1_fj7yv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3sb7"]
+size = Vector2(521, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fj7yv"]
+size = Vector2(1390, 118)
+
+[node name="World" type="Node2D" unique_id=753451201]
+script = ExtResource("1_fj7yv")
+
+[node name="Guy" parent="." unique_id=868721283 instance=ExtResource("1_f3sb7")]
+position = Vector2(112, 322)
+
+[node name="Guy2" parent="." unique_id=195437071 instance=ExtResource("1_f3sb7")]
+position = Vector2(358, 320)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1709563136]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2054318099]
+position = Vector2(319.5, 350)
+shape = SubResource("RectangleShape2D_f3sb7")
+
+[node name="KillZone" type="Area2D" parent="." unique_id=2077498339]
+position = Vector2(-12, 362)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" unique_id=95048072]
+position = Vector2(335, 59)
+shape = SubResource("RectangleShape2D_fj7yv")
+
+[connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
