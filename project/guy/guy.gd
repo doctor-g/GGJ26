@@ -17,6 +17,8 @@ const PUSH_EFFECT_DURATION := 0.3
 
 @export var player_index := 0
 
+var color : Color
+
 ## If stunned, I am being pushed and cannot do anything.
 var stunned := false
 
@@ -33,6 +35,10 @@ var _facing := Facing.RIGHT
 @onready var _jumping_push_sprite := $JumpingPush/Visual
 @onready var _body_sprite := %BodySprite
 
+
+func _ready() -> void:
+	_body_sprite.material.set_shader_parameter("replacement", color)
+	
 
 func _physics_process(delta: float) -> void:
 	# Check for death

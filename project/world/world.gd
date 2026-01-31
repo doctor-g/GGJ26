@@ -1,5 +1,6 @@
 extends Node2D
 
+const COLORS : Array[Color] = [Color.BLUE, Color.RED, Color.GREEN, Color.YELLOW]
 const MAX_PLAYERS := 2
 const MAX_LIVES := 3
 
@@ -12,6 +13,7 @@ func _ready() -> void:
 	# Create the players
 	for i in MAX_PLAYERS:
 		var player := Player.new()
+		player.color = COLORS[i]
 		player.lives = MAX_LIVES
 		_players.append(player)
 	
@@ -28,6 +30,7 @@ func _process(_delta: float) -> void:
 func _spawn_guy(index:int) -> void:
 	var guy : Guy = guy_scene.instantiate()
 	guy.player_index = index
+	guy.color = _players[index].color
 	guy.global_position = %SpawnPoints.get_children()[index].global_position
 	add_child(guy)
 	

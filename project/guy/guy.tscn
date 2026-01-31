@@ -3,10 +3,17 @@
 [ext_resource type="Texture2D" uid="uid://cftllq6l7xclt" path="res://icon.svg" id="1_8h3iv"]
 [ext_resource type="Script" uid="uid://b7su6taplbutt" path="res://guy/guy.gd" id="1_o5w3i"]
 [ext_resource type="PackedScene" uid="uid://dm8uom6ics47q" path="res://guy/body_sprite.tscn" id="2_vupqh"]
+[ext_resource type="Shader" uid="uid://bn521wm6yugko" path="res://guy/body.gdshader" id="3_jtfwu"]
 [ext_resource type="Texture2D" uid="uid://dt6l4lqua3e4u" path="res://guy/push.png" id="3_ynse4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ihqf1"]
 size = Vector2(32, 64)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jtfwu"]
+resource_local_to_scene = true
+shader = ExtResource("3_jtfwu")
+shader_parameter/origin = Color(1, 1, 1, 1)
+shader_parameter/replacement = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tj2cq"]
 size = Vector2(64, 32)
@@ -23,6 +30,7 @@ shape = SubResource("RectangleShape2D_ihqf1")
 
 [node name="BodySprite" parent="." unique_id=324161803 instance=ExtResource("2_vupqh")]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_jtfwu")
 position = Vector2(0, -20)
 
 [node name="HeadSprite" type="Sprite2D" parent="." unique_id=2117563986]
