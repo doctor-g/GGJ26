@@ -15,9 +15,24 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_tlwt5")
 
-[node name="World" type="Node2D" unique_id=753451201]
+[node name="World" type="Control" unique_id=537833106]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_fj7yv")
 guy_scene = ExtResource("1_f3sb7")
+
+[node name="Background" type="ColorRect" parent="." unique_id=2088785746]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15525219, 0.22029793, 0.2134858, 1)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=827048682]
 tile_map_data = PackedByteArray("AAADAAoAAQAAAAAAAAAEAAoAAQAAAAAAAAAFAAoAAQAAAAAAAAAGAAoAAQAAAAAAAAAHAAoAAQAAAAAAAAAIAAoAAQAAAAAAAAAJAAoAAQAAAAAAAAAKAAoAAQAAAAAAAAALAAoAAQAAAAAAAAAMAAoAAQAAAAAAAAANAAoAAQAAAAAAAAAQAAoAAQAAAAAAAAAPAAoAAQAAAAAAAAAOAAoAAQAAAAAAAAAGAAYAAQAAAAAAAAAHAAYAAQAAAAAAAAAIAAYAAQAAAAAAAAALAAYAAQAAAAAAAAAMAAYAAQAAAAAAAAANAAYAAQAAAAAAAAA=")

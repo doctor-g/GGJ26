@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 const COLORS : Array[Color] = [Color.BLUE, Color.RED, Color.GREEN, Color.YELLOW]
 const MAX_PLAYERS := 2
