@@ -1,6 +1,7 @@
 extends Node2D
 
-var MAX_PLAYERS := 2
+const MAX_PLAYERS := 2
+const MAX_LIVES := 3
 
 @export var guy_scene : PackedScene
 
@@ -11,6 +12,7 @@ func _ready() -> void:
 	# Create the players
 	for i in MAX_PLAYERS:
 		var player := Player.new()
+		player.lives = MAX_LIVES
 		_players.append(player)
 	
 	var spawn_points := %SpawnPoints.get_children()
