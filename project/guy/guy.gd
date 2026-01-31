@@ -5,6 +5,7 @@ signal died
 
 enum Facing {LEFT, RIGHT}
 
+const KILL_Y := 360 + 32 * 2 # Bottom of screen plus the height of the character
 const SPEED = 300.0
 const JUMP_VELOCITY = -500.0
 const PUSH_STRENGTH := 300.0
@@ -26,6 +27,11 @@ var _facing := Facing.RIGHT
 @onready var _jumping_push_center_x : float = %JumpingPush.position.x
 
 func _physics_process(delta: float) -> void:
+	# Check for death
+	if position.y >= KILL_Y:
+		died.emit()
+		return
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -84,10 +90,6 @@ func _push(target:Guy) -> void:
 		target.velocity.y = PUSH_UPWARD_VELOCITY
 	await get_tree().create_timer(PUSH_EFFECT_DURATION).timeout
 	target.stunned = false
-
-
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	died.emit()
 
 
 func _on_jumping_push_body_entered(body: Node2D) -> void:
