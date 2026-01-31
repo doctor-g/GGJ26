@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://ds8hankrr1tdv"]
+
+[ext_resource type="Script" uid="uid://b1xvdii01tio2" path="res://title/title.gd" id="1_crako"]
+[ext_resource type="FontFile" uid="uid://bpolgp4yyh1ii" path="res://title/Ewert-Regular.ttf" id="1_yx5l7"]
+[ext_resource type="PackedScene" uid="uid://dms4hsr1b1uh1" path="res://world/world.tscn" id="2_nx56k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_crako"]
+font = ExtResource("1_yx5l7")
+font_size = 96
+font_color = Color(1, 0.6509804, 0.18039216, 1)
+
+[node name="Title" type="Control" unique_id=1130191881]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_crako")
+main_game_scene = ExtResource("2_nx56k")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1033593466]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2423597, 0.20903194, 0.07678773, 1)
+
+[node name="TitleLabel" type="Label" parent="." unique_id=1304198496]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -411.5
+offset_top = -80.0
+offset_right = 411.5
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Shove Off!"
+label_settings = SubResource("LabelSettings_crako")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="." unique_id=441058764]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.5
+offset_top = 46.0
+offset_right = 80.5
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press START to begin"
