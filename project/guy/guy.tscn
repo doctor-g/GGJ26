@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bchk8uca8q32o"]
 
 [ext_resource type="Texture2D" uid="uid://cftllq6l7xclt" path="res://icon.svg" id="1_8h3iv"]
-[ext_resource type="Script" uid="uid://b7su6taplbutt" path="res://guy.gd" id="1_tj2cq"]
+[ext_resource type="Script" uid="uid://b7su6taplbutt" path="res://guy/guy.gd" id="1_o5w3i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ihqf1"]
 size = Vector2(50, 100)
@@ -10,7 +10,7 @@ size = Vector2(50, 100)
 size = Vector2(136, 55)
 
 [node name="Guy" type="CharacterBody2D" unique_id=868721283]
-script = ExtResource("1_tj2cq")
+script = ExtResource("1_o5w3i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1363029511]
 position = Vector2(0, -50)
@@ -28,4 +28,9 @@ position = Vector2(95, -52)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HorizontalPush" unique_id=1941479127]
 shape = SubResource("RectangleShape2D_tj2cq")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=437205413]
+position = Vector2(0, -50)
+rect = Rect2(-24, -50, 49, 100)
+
 [connection signal="body_entered" from="HorizontalPush" to="." method="_on_horizontal_push_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -42,3 +42,8 @@ func _on_horizontal_push_body_entered(body: Node2D) -> void:
 		body.push_vector = Vector2.RIGHT
 		await get_tree().create_timer(0.3).timeout
 		body.push_vector = Vector2.ZERO
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	print("dead")
+	queue_free()
