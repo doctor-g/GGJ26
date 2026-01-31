@@ -16,6 +16,11 @@ func _ready() -> void:
 		player.color = COLORS[i]
 		player.lives = MAX_LIVES
 		_players.append(player)
+		
+		var lives_control := preload("res://world/lives_control.tscn").instantiate()
+		lives_control.player = player
+		lives_control.number= i + 1
+		%LivesBox.add_child(lives_control)
 	
 	var spawn_points := %SpawnPoints.get_children()
 	for i in spawn_points.size():

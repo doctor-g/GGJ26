@@ -35,3 +35,11 @@ position = Vector2(268, 317)
 
 [node name="SpawnPoint2" type="Marker2D" parent="SpawnPoints" unique_id=1972516659]
 position = Vector2(379, 317)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1415374583]
+
+[node name="LivesBox" type="HBoxContainer" parent="UI" unique_id=249763389]
+unique_name_in_owner = true
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
