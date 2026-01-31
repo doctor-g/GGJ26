@@ -27,6 +27,7 @@ texture = ExtResource("1_8h3iv")
 [node name="HorizontalPush" type="Area2D" parent="." unique_id=309215542]
 unique_name_in_owner = true
 position = Vector2(49, -31)
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HorizontalPush" unique_id=1941479127]
 shape = SubResource("RectangleShape2D_tj2cq")
@@ -36,6 +37,7 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 position = Vector2(35.999992, 2.999998)
 rotation = 0.6981317
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JumpingPush" unique_id=1697867517]
 shape = SubResource("RectangleShape2D_o5w3i")
