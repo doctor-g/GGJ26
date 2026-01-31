@@ -31,6 +31,7 @@ func _spawn_guy(index:int) -> void:
 	var guy : Guy = guy_scene.instantiate()
 	guy.player_index = index
 	guy.color = _players[index].color
+	guy.face_texture = Palette.faces[index]
 	guy.global_position = %SpawnPoints.get_children()[index].global_position
 	add_child(guy)
 	

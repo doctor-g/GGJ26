@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://rkrhp202q7t6"]
+
+[ext_resource type="Script" uid="uid://uyfax5s4gdc8" path="res://common/palette.gd" id="1_d4gsr"]
+[ext_resource type="Texture2D" uid="uid://dx0dmfo8mmr8b" path="res://guy/mask_blue.png" id="2_x3b7d"]
+[ext_resource type="Texture2D" uid="uid://x1l0cyaqtdcw" path="res://guy/mask_red.png" id="3_momdb"]
+[ext_resource type="Texture2D" uid="uid://c2sijstmpfqas" path="res://guy/mask_green.png" id="4_hvpy5"]
+[ext_resource type="Texture2D" uid="uid://cceen7ysdk5xl" path="res://guy/mask_yellow.png" id="5_ymhuo"]
+
+[node name="Palette" type="Node" unique_id=1921237757]
+script = ExtResource("1_d4gsr")
+faces = [ExtResource("2_x3b7d"), ExtResource("3_momdb"), ExtResource("4_hvpy5"), ExtResource("5_ymhuo")]

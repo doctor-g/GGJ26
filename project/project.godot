@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 InputInitializer="*uid://crc8pbrsd84uu"
 GlobalShortcuts="*uid://cf1835fs64j3"
 Jukebox="*uid://dabq7kj46qdkc"
+Palette="*uid://rkrhp202q7t6"
 
 [display]
 

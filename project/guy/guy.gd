@@ -18,6 +18,7 @@ const PUSH_EFFECT_DURATION := 0.3
 @export var player_index := 0
 
 var color : Color
+var face_texture : Texture2D
 
 ## Set this to false to make this stop responding
 var active := true
@@ -42,7 +43,8 @@ var _facing := Facing.RIGHT
 
 func _ready() -> void:
 	_body_sprite.material.set_shader_parameter("replacement", color)
-	
+	%HeadSprite.texture = face_texture
+
 
 func _physics_process(delta: float) -> void:
 	if not active:

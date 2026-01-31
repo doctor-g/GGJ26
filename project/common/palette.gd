@@ -1,6 +1,8 @@
-class_name Palette extends RefCounted
+extends Node
 
-static var colors : Array[Color] = [
+@export var faces : Array[Texture2D]
+
+var colors : Array[Color] = [
 	# Santo blue
 	Color.html("8ed2e5"), 
 	# Bright red
