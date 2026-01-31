@@ -29,6 +29,7 @@ grow_vertical = 2
 color = Color(0.2423597, 0.20903194, 0.07678773, 1)
 
 [node name="TitleLabel" type="Label" parent="." unique_id=1304198496]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -59,3 +60,9 @@ offset_bottom = 69.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Press START to begin"
+
+[node name="ColorFlashTimer" type="Timer" parent="." unique_id=289916302]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="ColorFlashTimer" to="." method="_on_color_flash_timer_timeout"]
