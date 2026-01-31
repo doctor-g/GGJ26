@@ -24,7 +24,6 @@ var stunned := false
 var _pushing := false
 
 var _facing := Facing.RIGHT
-var _is_push_ready := true
 
 # Cache these values so that the facing can be properly handled later.
 @onready var _horizontal_push_center_x : float = %HorizontalPush.position.x
@@ -89,7 +88,7 @@ func _physics_process(delta: float) -> void:
 			if is_on_floor():
 				velocity.x = move_toward(velocity.x, 0, SPEED)
 
-		if Input.is_action_just_pressed("p%d_action" % player_index) and _is_push_ready:
+		if Input.is_action_just_pressed("p%d_action" % player_index) and not _pushing:
 			_pushing = true
 			_body_sprite.play(&"push")
 			
@@ -113,7 +112,6 @@ func _physics_process(delta: float) -> void:
 			)
 			
 			# Start the cooldown before the player can push again
-			_is_push_ready = false
 			%PushCooldown.start()
 
 	move_and_slide()
@@ -132,5 +130,4 @@ func _push(target:Guy) -> void:
 
 
 func _on_push_cooldown_timeout() -> void:
-	_is_push_ready = true
 	_pushing = false
