@@ -7,6 +7,10 @@ func _ready() -> void:
 	for i in spawn_points.size():
 		_spawn_guy(i)
 
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("toggle_fullscreen"):
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED else DisplayServer.WINDOW_MODE_WINDOWED)
+
 
 func _spawn_guy(index:int) -> void:
 	var guy : Guy = guy_scene.instantiate()
