@@ -2,7 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://csl2gt2v4y6w4" path="res://guy/guy_idle.png" id="1_1h6ef"]
 [ext_resource type="Texture2D" uid="uid://dxa2imroyiu16" path="res://guy/guy_push.png" id="2_3ljeu"]
+[ext_resource type="Texture2D" uid="uid://cth2anw0mdxgx" path="res://guy/guy_jump.png" id="2_srdcs"]
 [ext_resource type="Texture2D" uid="uid://bwrkxjs3oqyny" path="res://guy/guy_walk.png" id="2_xwf2m"]
+[ext_resource type="Texture2D" uid="uid://c1oi534wb1v4g" path="res://guy/guy_shoved_front.png" id="4_sriu0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ljeu"]
 atlas = ExtResource("2_xwf2m")
@@ -24,10 +26,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_srdcs")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_3ljeu")
 }],
 "loop": true,
 "name": &"push",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_sriu0")
+}],
+"loop": true,
+"name": &"shoved_front",
 "speed": 5.0
 }, {
 "frames": [{
@@ -45,6 +63,5 @@ animations = [{
 [node name="BodySprite" type="AnimatedSprite2D" unique_id=324161803]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ynse4")
-animation = &"push"
+animation = &"shoved_front"
 autoplay = "idle"
-frame_progress = 0.90508986
