@@ -1,6 +1,15 @@
 extends Control
 
-const COLORS : Array[Color] = [Color.BLUE, Color.RED, Color.GREEN, Color.YELLOW]
+var COLORS : Array[Color] = [
+	# Santo blue
+	Color.html("8ed2e5"), 
+	# Bright red
+	Color.html("dc263b"),
+	# Bright green
+	Color.html("009f59"),
+	# Bright yellow
+	Color.html("cdca55"),
+]
 const MAX_PLAYERS := 4
 const MAX_LIVES := 3
 
@@ -28,11 +37,6 @@ func _ready() -> void:
 	var spawn_points := %SpawnPoints.get_children()
 	for i in spawn_points.size():
 		_spawn_guy(i)
-
-
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("toggle_fullscreen"):
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED else DisplayServer.WINDOW_MODE_WINDOWED)
 
 
 func _spawn_guy(index:int) -> void:
