@@ -43,6 +43,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	if stunned:
+		_body_sprite.play(&"shoved_front")
 		# No player controls while stunned.
 		# Just reduce horizontal velocity by "friction" amount if on ground
 		if is_on_floor():
@@ -51,11 +52,13 @@ func _physics_process(delta: float) -> void:
 	else:
 		# Handle jump.
 		if Input.is_action_just_pressed("p%d_jump" % player_index) and is_on_floor():
+			_body_sprite.play(&"jump")
 			velocity.y = JUMP_VELOCITY
 			
 		var direction := Input.get_axis("p%d_left" % player_index, "p%d_right" % player_index)
 		if direction:
-			_body_sprite.play(&"walk")
+			if is_on_floor():
+				_body_sprite.play(&"walk")
 			velocity.x = direction * SPEED
 			# Face the direction of the input.
 			# It has to be negative or positive here since we are inside the conditional.
@@ -69,14 +72,18 @@ func _physics_process(delta: float) -> void:
 				_jumping_push_sprite.flip_h = _facing == Facing.LEFT
 				_body_sprite.flip_h = _facing == Facing.LEFT
 		else:
-			# Player did not specify a direction
-			_body_sprite.play(&"idle")
+			if is_on_floor():
+				_body_sprite.play(&"idle")
 			# Only slow down horizontal while on the ground.
 			# This way, players who are pushed into the air complete their arc.
 			if is_on_floor():
 				velocity.x = move_toward(velocity.x, 0, SPEED)
 
 		if Input.is_action_just_pressed("p%d_action" % player_index) and _is_push_ready:
+			# Note: This plays for only one frame right now. 
+			# TODO: Disable moving during the push window
+			_body_sprite.play(&"push")
+			
 			# Adjust the position of the collision areas based on facing.
 			%HorizontalPush.position.x = _horizontal_push_center_x * (-1 if _facing==Facing.LEFT else 1)
 			%JumpingPush.position.x = _jumping_push_center_x * (-1 if _facing==Facing.LEFT else 1)
