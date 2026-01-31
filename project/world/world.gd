@@ -1,15 +1,5 @@
 extends Control
 
-var COLORS : Array[Color] = [
-	# Santo blue
-	Color.html("8ed2e5"), 
-	# Bright red
-	Color.html("dc263b"),
-	# Bright green
-	Color.html("009f59"),
-	# Bright yellow
-	Color.html("cdca55"),
-]
 const MAX_PLAYERS := 4
 const MAX_LIVES := 3
 
@@ -25,7 +15,7 @@ func _ready() -> void:
 	# Create the players
 	for i in MAX_PLAYERS:
 		var player := Player.new()
-		player.color = COLORS[i]
+		player.color = Palette.colors[i]
 		player.lives = MAX_LIVES
 		_players.append(player)
 		
