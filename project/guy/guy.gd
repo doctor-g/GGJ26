@@ -19,6 +19,9 @@ const PUSH_EFFECT_DURATION := 0.3
 
 var color : Color
 
+## Set this to false to make this stop responding
+var active := true
+
 ## If stunned, I am being pushed and cannot do anything.
 var stunned := false
 
@@ -41,6 +44,9 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
+	if not active:
+		return
+	
 	# Check for death
 	if position.y >= KILL_Y:
 		died.emit()

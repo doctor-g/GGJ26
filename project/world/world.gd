@@ -2,7 +2,10 @@ extends Node2D
 
 const COLORS : Array[Color] = [Color.BLUE, Color.RED, Color.GREEN, Color.YELLOW]
 const MAX_PLAYERS := 2
-const MAX_LIVES := 3
+const MAX_LIVES := 1
+
+## How many seconds to wait before starting the next round
+const TIME_BETWEEN_GAMES := 3.5
 
 @export var guy_scene : PackedScene
 
@@ -66,6 +69,9 @@ func _check_for_game_end() -> void:
 
 func _on_game_over(winner:Player) -> void:
 	var index = _players.find(winner)
-	%WinnerLabel.text = "Player %d Wins!" % (_players.find(winner)+1)
+	%WinnerLabel.text = "Player %d Wins!" % (index+1)
 	%WinnerLabel.visible = true
-	
+	for guy in get_tree().get_nodes_in_group(&"guys"):
+		guy.active = false
+	await get_tree().create_timer(TIME_BETWEEN_GAMES).timeout
+	get_tree().reload_current_scene()

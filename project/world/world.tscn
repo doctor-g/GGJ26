@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://bchk8uca8q32o" path="res://guy/guy.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://ya0xbplcljk6" path="res://world/world.gd" id="1_fj7yv"]
-[ext_resource type="Script" uid="uid://crc8pbrsd84uu" path="res://world/input_initializer.gd" id="2_aqk2v"]
 [ext_resource type="Texture2D" uid="uid://c5pjv1xuqwoed" path="res://world/one_tile.png" id="3_tlwt5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tlwt5"]
@@ -19,9 +18,6 @@ sources/1 = SubResource("TileSetAtlasSource_tlwt5")
 [node name="World" type="Node2D" unique_id=753451201]
 script = ExtResource("1_fj7yv")
 guy_scene = ExtResource("1_f3sb7")
-
-[node name="InputInitializer" type="Node" parent="." unique_id=400651824]
-script = ExtResource("2_aqk2v")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=827048682]
 tile_map_data = PackedByteArray("AAADAAoAAQAAAAAAAAAEAAoAAQAAAAAAAAAFAAoAAQAAAAAAAAAGAAoAAQAAAAAAAAAHAAoAAQAAAAAAAAAIAAoAAQAAAAAAAAAJAAoAAQAAAAAAAAAKAAoAAQAAAAAAAAALAAoAAQAAAAAAAAAMAAoAAQAAAAAAAAANAAoAAQAAAAAAAAAQAAoAAQAAAAAAAAAPAAoAAQAAAAAAAAAOAAoAAQAAAAAAAAAGAAYAAQAAAAAAAAAHAAYAAQAAAAAAAAAIAAYAAQAAAAAAAAALAAYAAQAAAAAAAAAMAAYAAQAAAAAAAAANAAYAAQAAAAAAAAA=")
@@ -46,6 +42,7 @@ grow_horizontal = 2
 
 [node name="WinnerLabel" type="Label" parent="UI" unique_id=1961054171]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -59,3 +56,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Player N Wins!"
 horizontal_alignment = 1
+
+[node name="ReplayTimer" type="Timer" parent="." unique_id=1194849527]
+process_mode = 3
+wait_time = 5.0
