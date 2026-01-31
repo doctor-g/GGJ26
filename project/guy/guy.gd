@@ -21,6 +21,7 @@ const PUSH_EFFECT_DURATION := 0.3
 var stunned := false
 
 var _facing := Facing.RIGHT
+var _is_push_ready := true
 
 # Cache these values so that the facing can be properly handled later.
 @onready var _horizontal_push_center_x : float = %HorizontalPush.position.x
@@ -71,30 +72,32 @@ func _physics_process(delta: float) -> void:
 			_body_sprite.play(&"idle")
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 
-		var is_pushing := Input.is_action_pressed("p%d_action" % player_index)
-		if is_pushing:
+		if Input.is_action_just_pressed("p%d_action" % player_index) and _is_push_ready:
+			# Adjust the position of the collision areas based on facing.
+			%HorizontalPush.position.x = _horizontal_push_center_x * (-1 if _facing==Facing.LEFT else 1)
+			%JumpingPush.position.x = _jumping_push_center_x * (-1 if _facing==Facing.LEFT else 1)
+			
+			# Show the correct push effect
 			%HorizontalPush.visible = is_on_floor()
 			%JumpingPush.visible = not is_on_floor()
-		else:
-			%HorizontalPush.visible = false
-			%JumpingPush.visible = false
-		if is_on_floor():
-			%HorizontalPush.monitoring = is_pushing
-			%JumpingPush.monitoring = false
-		else:
-			%HorizontalPush.monitoring = false
-			%JumpingPush.monitoring = is_pushing
-		
-		# Adjust the position of the collision areas based on facing.
-		%HorizontalPush.position.x = _horizontal_push_center_x * (-1 if _facing==Facing.LEFT else 1)
-		%JumpingPush.position.x = _jumping_push_center_x * (-1 if _facing==Facing.LEFT else 1)
+			
+			var area:Area2D = %HorizontalPush if is_on_floor() else %JumpingPush
+			for body in area.get_overlapping_bodies():
+				if body != self and body is Guy and is_instance_valid(body):
+					_push(body)
+			
+			# Hide the visual effect after a moment
+			get_tree().create_timer(0.2).timeout.connect(func():
+				%HorizontalPush.visible = false
+				%JumpingPush.visible = false
+			)
+			
+			# Start the cooldown before the player can push again
+			_is_push_ready = false
+			%PushCooldown.start()
 
 	move_and_slide()
 
-
-func _on_horizontal_push_body_entered(body: Node2D) -> void:
-	if body is Guy and body != self and is_instance_valid(body):
-		_push(body)
 
 func _push(target:Guy) -> void:
 	target.stunned = true
@@ -108,6 +111,5 @@ func _push(target:Guy) -> void:
 	target.stunned = false
 
 
-func _on_jumping_push_body_entered(body: Node2D) -> void:
-	if body is Guy and body != self and is_instance_valid(body):
-		_push(body)
+func _on_push_cooldown_timeout() -> void:
+	_is_push_ready = true
