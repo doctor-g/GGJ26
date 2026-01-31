@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fha5thbiw2tn"
-path="res://.godot/imported/guy_jump.png-fd944dda084f52b7458e8dd821fe0fde.ctex"
+uid="uid://cqugpn8tpq047"
+path="res://.godot/imported/mask_luchador.png-d1d58dc2e44be4fbf57551eb21daf5b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://guy/guy_jump.png"
-dest_files=["res://.godot/imported/guy_jump.png-fd944dda084f52b7458e8dd821fe0fde.ctex"]
+source_file="res://guy/mask_luchador.png"
+dest_files=["res://.godot/imported/mask_luchador.png-d1d58dc2e44be4fbf57551eb21daf5b4.ctex"]
 
 [params]
 

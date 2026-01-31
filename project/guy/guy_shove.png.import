@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxa2imroyiu16"
-path="res://.godot/imported/guy_push.png-cab6c7b06e896c5fbb74bd26906830a5.ctex"
+uid="uid://f6a5gsdnq72v"
+path="res://.godot/imported/guy_shove.png-9fba46ca50c343f5ddde072ec218e2a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://guy/guy_push.png"
-dest_files=["res://.godot/imported/guy_push.png-cab6c7b06e896c5fbb74bd26906830a5.ctex"]
+source_file="res://guy/guy_shove.png"
+dest_files=["res://.godot/imported/guy_shove.png-9fba46ca50c343f5ddde072ec218e2a8.ctex"]
 
 [params]
 

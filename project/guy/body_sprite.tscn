@@ -1,34 +1,50 @@
 [gd_scene format=3 uid="uid://dm8uom6ics47q"]
 
 [ext_resource type="Texture2D" uid="uid://csl2gt2v4y6w4" path="res://guy/guy_idle.png" id="1_1h6ef"]
-[ext_resource type="Texture2D" uid="uid://dxa2imroyiu16" path="res://guy/guy_push.png" id="2_3ljeu"]
-[ext_resource type="Texture2D" uid="uid://cth2anw0mdxgx" path="res://guy/guy_jump.png" id="2_srdcs"]
+[ext_resource type="Texture2D" uid="uid://fha5thbiw2tn" path="res://guy/guy_jump.png" id="2_srdcs"]
+[ext_resource type="Texture2D" uid="uid://f6a5gsdnq72v" path="res://guy/guy_shove.png" id="3_srdcs"]
 [ext_resource type="Texture2D" uid="uid://c1oi534wb1v4g" path="res://guy/guy_shoved_front.png" id="4_sriu0"]
-[ext_resource type="Texture2D" uid="uid://cdi86fukuxxa6" path="res://guy/guy_walk.png" id="5_srdcs"]
+[ext_resource type="Texture2D" uid="uid://pc8v7b2bkc7x" path="res://guy/guy_walk.png" id="5_srdcs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sriu0"]
-atlas = ExtResource("5_srdcs")
-region = Rect2(0, 0, 32, 40)
+atlas = ExtResource("2_srdcs")
+region = Rect2(16, 0, 16, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sqby2"]
-atlas = ExtResource("5_srdcs")
-region = Rect2(32, 0, 32, 40)
+atlas = ExtResource("2_srdcs")
+region = Rect2(0, 20, 16, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_clkmg"]
-atlas = ExtResource("5_srdcs")
-region = Rect2(64, 0, 32, 40)
+atlas = ExtResource("3_srdcs")
+region = Rect2(0, 0, 16, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wf0pj"]
-atlas = ExtResource("5_srdcs")
-region = Rect2(0, 40, 32, 40)
+atlas = ExtResource("3_srdcs")
+region = Rect2(16, 0, 16, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_irk7y"]
 atlas = ExtResource("5_srdcs")
-region = Rect2(32, 40, 32, 40)
+region = Rect2(0, 0, 16, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n485r"]
 atlas = ExtResource("5_srdcs")
-region = Rect2(64, 40, 32, 40)
+region = Rect2(16, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hekb"]
+atlas = ExtResource("5_srdcs")
+region = Rect2(32, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ton4c"]
+atlas = ExtResource("5_srdcs")
+region = Rect2(0, 20, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ow1bb"]
+atlas = ExtResource("5_srdcs")
+region = Rect2(16, 20, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jgs8"]
+atlas = ExtResource("5_srdcs")
+region = Rect2(32, 20, 16, 20)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ynse4"]
 animations = [{
@@ -42,7 +58,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_srdcs")
+"texture": SubResource("AtlasTexture_sriu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqby2")
 }],
 "loop": true,
 "name": &"jump",
@@ -50,7 +69,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_3ljeu")
+"texture": SubResource("AtlasTexture_clkmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wf0pj")
 }],
 "loop": true,
 "name": &"push",
@@ -66,22 +88,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sriu0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sqby2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_clkmg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wf0pj")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_irk7y")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n485r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hekb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ton4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ow1bb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jgs8")
 }],
 "loop": true,
 "name": &"walk",
@@ -90,7 +112,7 @@ animations = [{
 
 [node name="BodySprite" type="AnimatedSprite2D" unique_id=324161803]
 texture_filter = 1
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ynse4")
-animation = &"walk"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.81417197
