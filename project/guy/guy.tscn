@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cftllq6l7xclt" path="res://icon.svg" id="1_8h3iv"]
 [ext_resource type="Script" uid="uid://b7su6taplbutt" path="res://guy/guy.gd" id="1_o5w3i"]
+[ext_resource type="Texture2D" uid="uid://dt6l4lqua3e4u" path="res://guy/push.png" id="3_ynse4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ihqf1"]
 size = Vector2(32, 64)
@@ -26,6 +27,7 @@ texture = ExtResource("1_8h3iv")
 
 [node name="HorizontalPush" type="Area2D" parent="." unique_id=309215542]
 unique_name_in_owner = true
+visible = false
 position = Vector2(49, -31)
 monitoring = false
 
@@ -33,8 +35,12 @@ monitoring = false
 shape = SubResource("RectangleShape2D_tj2cq")
 metadata/_edit_lock_ = true
 
+[node name="Visual" type="Sprite2D" parent="HorizontalPush" unique_id=1036968293]
+texture = ExtResource("3_ynse4")
+
 [node name="JumpingPush" type="Area2D" parent="." unique_id=853626814]
 unique_name_in_owner = true
+visible = false
 position = Vector2(35.999992, 2.999998)
 rotation = 0.6981317
 monitoring = false
@@ -42,6 +48,9 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JumpingPush" unique_id=1697867517]
 shape = SubResource("RectangleShape2D_o5w3i")
 metadata/_edit_lock_ = true
+
+[node name="Visual" type="Sprite2D" parent="JumpingPush" unique_id=636013735]
+texture = ExtResource("3_ynse4")
 
 [connection signal="body_entered" from="HorizontalPush" to="." method="_on_horizontal_push_body_entered"]
 [connection signal="body_entered" from="JumpingPush" to="." method="_on_jumping_push_body_entered"]

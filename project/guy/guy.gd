@@ -26,6 +26,9 @@ var _facing := Facing.RIGHT
 @onready var _horizontal_push_center_x : float = %HorizontalPush.position.x
 @onready var _jumping_push_center_x : float = %JumpingPush.position.x
 
+@onready var _horizontal_push_sprite := $HorizontalPush/Visual
+@onready var _jumping_push_sprite := $JumpingPush/Visual
+
 func _physics_process(delta: float) -> void:
 	# Check for death
 	if position.y >= KILL_Y:
@@ -58,10 +61,18 @@ func _physics_process(delta: float) -> void:
 				%HorizontalPush.position.x *= -1
 				%JumpingPush.position.x *= -1
 				%JumpingPush.rotation *= -1
+				_horizontal_push_sprite.flip_h = _facing == Facing.LEFT
+				_jumping_push_sprite.flip_h = _facing == Facing.LEFT
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 
 		var is_pushing := Input.is_action_pressed("p%d_action" % player_index)
+		if is_pushing:
+			%HorizontalPush.visible = is_on_floor()
+			%JumpingPush.visible = not is_on_floor()
+		else:
+			%HorizontalPush.visible = false
+			%JumpingPush.visible = false
 		if is_on_floor():
 			%HorizontalPush.monitoring = is_pushing
 			%JumpingPush.monitoring = false
