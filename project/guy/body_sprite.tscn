@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://csl2gt2v4y6w4" path="res://guy/guy_idle.png" id="1_1h6ef"]
 [ext_resource type="Texture2D" uid="uid://fha5thbiw2tn" path="res://guy/guy_jump.png" id="2_srdcs"]
 [ext_resource type="Texture2D" uid="uid://f6a5gsdnq72v" path="res://guy/guy_shove.png" id="3_srdcs"]
-[ext_resource type="Texture2D" uid="uid://c1oi534wb1v4g" path="res://guy/guy_shoved_front.png" id="4_sriu0"]
+[ext_resource type="Texture2D" uid="uid://br1tlahixsrui" path="res://guy/guy_shoved.png" id="4_srdcs"]
 [ext_resource type="Texture2D" uid="uid://pc8v7b2bkc7x" path="res://guy/guy_walk.png" id="5_srdcs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sriu0"]
@@ -80,7 +80,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_sriu0")
+"texture": ExtResource("4_srdcs")
 }],
 "loop": true,
 "name": &"shoved_front",
@@ -114,5 +114,5 @@ animations = [{
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ynse4")
-animation = &"idle"
+animation = &"shoved_front"
 autoplay = "idle"
