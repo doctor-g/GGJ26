@@ -69,8 +69,12 @@ func _physics_process(delta: float) -> void:
 				_jumping_push_sprite.flip_h = _facing == Facing.LEFT
 				_body_sprite.flip_h = _facing == Facing.LEFT
 		else:
+			# Player did not specify a direction
 			_body_sprite.play(&"idle")
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+			# Only slow down horizontal while on the ground.
+			# This way, players who are pushed into the air complete their arc.
+			if is_on_floor():
+				velocity.x = move_toward(velocity.x, 0, SPEED)
 
 		if Input.is_action_just_pressed("p%d_action" % player_index) and _is_push_ready:
 			# Adjust the position of the collision areas based on facing.
