@@ -1,19 +1,41 @@
 [gd_scene format=3 uid="uid://dm8uom6ics47q"]
 
-[ext_resource type="Texture2D" uid="uid://cb2ktttror608" path="res://guy/body_placeholder.png" id="1_h8np7"]
+[ext_resource type="Texture2D" uid="uid://csl2gt2v4y6w4" path="res://guy/guy_idle.png" id="1_1h6ef"]
+[ext_resource type="Texture2D" uid="uid://bwrkxjs3oqyny" path="res://guy/guy_walk.png" id="2_xwf2m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ljeu"]
+atlas = ExtResource("2_xwf2m")
+region = Rect2(0, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srdcs"]
+atlas = ExtResource("2_xwf2m")
+region = Rect2(32, 0, 32, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ynse4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_h8np7")
+"texture": ExtResource("1_1h6ef")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ljeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srdcs")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
 }]
 
 [node name="BodySprite" type="AnimatedSprite2D" unique_id=324161803]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ynse4")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.15323395
