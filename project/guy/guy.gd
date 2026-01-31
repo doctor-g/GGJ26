@@ -61,7 +61,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_horizontal_push_body_entered(body: Node2D) -> void:
-	if body is Guy and body != self:
+	if body is Guy and body != self and is_instance_valid(body):
 		body.push_vector = Vector2.RIGHT if _facing==Facing.RIGHT else Vector2.LEFT
 		await get_tree().create_timer(PUSH_EFFECT_DURATION).timeout
 		body.push_vector = Vector2.ZERO
@@ -73,7 +73,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 
 func _on_jumping_push_body_entered(body: Node2D) -> void:
-	if body is Guy and body != self:
+	if body is Guy and body != self and is_instance_valid(body):
 		body.push_vector = Vector2.RIGHT if _facing==Facing.RIGHT else Vector2.LEFT
 		body.velocity.y = JUMP_VELOCITY / 2 # Heuristic
 		await get_tree().create_timer(PUSH_EFFECT_DURATION).timeout
