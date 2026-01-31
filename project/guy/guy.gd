@@ -20,6 +20,9 @@ const PUSH_EFFECT_DURATION := 0.3
 ## If stunned, I am being pushed and cannot do anything.
 var stunned := false
 
+## If I am pushing, I cannot move left nor right
+var _pushing := false
+
 var _facing := Facing.RIGHT
 var _is_push_ready := true
 
@@ -48,7 +51,14 @@ func _physics_process(delta: float) -> void:
 		# Just reduce horizontal velocity by "friction" amount if on ground
 		if is_on_floor():
 			velocity.x = move_toward(velocity.x, 0, PUSH_DECAY)
+	
+	elif _pushing:
+		# Cannot move while pushing.
+		# Just reduce horizontal velocity if on ground.
+		if is_on_floor():
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 		
+	# Regular locomotion.
 	else:
 		# Handle jump.
 		if Input.is_action_just_pressed("p%d_jump" % player_index) and is_on_floor():
@@ -80,8 +90,7 @@ func _physics_process(delta: float) -> void:
 				velocity.x = move_toward(velocity.x, 0, SPEED)
 
 		if Input.is_action_just_pressed("p%d_action" % player_index) and _is_push_ready:
-			# Note: This plays for only one frame right now. 
-			# TODO: Disable moving during the push window
+			_pushing = true
 			_body_sprite.play(&"push")
 			
 			# Adjust the position of the collision areas based on facing.
@@ -124,3 +133,4 @@ func _push(target:Guy) -> void:
 
 func _on_push_cooldown_timeout() -> void:
 	_is_push_ready = true
+	_pushing = false
