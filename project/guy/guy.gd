@@ -28,6 +28,8 @@ var _facing := Facing.RIGHT
 
 @onready var _horizontal_push_sprite := $HorizontalPush/Visual
 @onready var _jumping_push_sprite := $JumpingPush/Visual
+@onready var _body_sprite := %BodySprite
+
 
 func _physics_process(delta: float) -> void:
 	# Check for death
@@ -52,6 +54,7 @@ func _physics_process(delta: float) -> void:
 			
 		var direction := Input.get_axis("p%d_left" % player_index, "p%d_right" % player_index)
 		if direction:
+			_body_sprite.play(&"walk")
 			velocity.x = direction * SPEED
 			# Face the direction of the input.
 			# It has to be negative or positive here since we are inside the conditional.
@@ -63,7 +66,9 @@ func _physics_process(delta: float) -> void:
 				%JumpingPush.rotation *= -1
 				_horizontal_push_sprite.flip_h = _facing == Facing.LEFT
 				_jumping_push_sprite.flip_h = _facing == Facing.LEFT
+				_body_sprite.flip_h = _facing == Facing.LEFT
 		else:
+			_body_sprite.play(&"idle")
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 
 		var is_pushing := Input.is_action_pressed("p%d_action" % player_index)

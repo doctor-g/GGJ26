@@ -86,6 +86,7 @@ position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_ihqf1")
 
 [node name="BodySprite" parent="." unique_id=324161803 instance=ExtResource("2_vupqh")]
+unique_name_in_owner = true
 position = Vector2(0, -20)
 
 [node name="HeadSprite" type="Sprite2D" parent="." unique_id=2117563986]
