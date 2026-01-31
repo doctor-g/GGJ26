@@ -111,19 +111,17 @@ func _physics_process(delta: float) -> void:
 			%JumpingPush.position.x = _jumping_push_center_x * (-1 if _facing==Facing.LEFT else 1)
 			
 			# Show the correct push effect
-			%HorizontalPush.visible = is_on_floor()
-			%JumpingPush.visible = not is_on_floor()
+			if is_on_floor():
+				_horizontal_push_sprite.play()
+				%HorizontalPush.visible = true
+			else:
+				_jumping_push_sprite.play()
+				%JumpingPush.visible = true
 			
 			var area:Area2D = %HorizontalPush if is_on_floor() else %JumpingPush
 			for body in area.get_overlapping_bodies():
 				if body != self and body is Guy and is_instance_valid(body):
 					_push(body)
-			
-			# Hide the visual effect after a moment
-			get_tree().create_timer(0.2).timeout.connect(func():
-				%HorizontalPush.visible = false
-				%JumpingPush.visible = false
-			)
 			
 			# Start the cooldown before the player can push again
 			%PushCooldown.start()
@@ -147,3 +145,8 @@ func _push(target:Guy) -> void:
 
 func _on_push_cooldown_timeout() -> void:
 	_pushing = false
+
+
+func _on_visual_animation_finished() -> void:
+	%HorizontalPush.visible = false
+	%JumpingPush.visible = false
