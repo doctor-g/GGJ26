@@ -36,6 +36,7 @@ var _facing := Facing.RIGHT
 
 @onready var _horizontal_push_sprite := $HorizontalPush/Visual
 @onready var _jumping_push_sprite := $JumpingPush/Visual
+@onready var _head_sprite := %HeadSprite
 @onready var _body_sprite := %BodySprite
 
 
@@ -92,6 +93,7 @@ func _physics_process(delta: float) -> void:
 				_horizontal_push_sprite.flip_h = _facing == Facing.LEFT
 				_jumping_push_sprite.flip_h = _facing == Facing.LEFT
 				_body_sprite.flip_h = _facing == Facing.LEFT
+				_head_sprite.flip_h = _facing == Facing.LEFT
 		else:
 			if is_on_floor():
 				_body_sprite.play(&"idle")

@@ -9,7 +9,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ihqf1"]
 size = Vector2(32, 64)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a17s0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jtfwu"]
 resource_local_to_scene = true
 shader = ExtResource("3_jtfwu")
 shader_parameter/origin = Color(1, 1, 1, 1)
@@ -30,10 +30,11 @@ shape = SubResource("RectangleShape2D_ihqf1")
 
 [node name="BodySprite" parent="." unique_id=324161803 instance=ExtResource("2_vupqh")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_a17s0")
+material = SubResource("ShaderMaterial_jtfwu")
 position = Vector2(0, -20)
 
 [node name="HeadSprite" type="Sprite2D" parent="." unique_id=2117563986]
+unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(-9.536743e-07, -47.500004)
 scale = Vector2(2, 1.936)
