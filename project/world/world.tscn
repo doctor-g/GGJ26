@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bchk8uca8q32o" path="res://guy/guy.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://ya0xbplcljk6" path="res://world/world.gd" id="1_fj7yv"]
 [ext_resource type="Shader" uid="uid://bypkvebwkw7mj" path="res://world/background.gdshader" id="3_h5o24"]
-[ext_resource type="Texture2D" uid="uid://c5pjv1xuqwoed" path="res://world/one_tile.png" id="3_tlwt5"]
+[ext_resource type="Texture2D" uid="uid://42pveew777ho" path="res://world/tile_mexican.png" id="4_h5o24"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mmdvd"]
 shader = ExtResource("3_h5o24")
@@ -14,8 +14,8 @@ shader_parameter/beam_count = 12.0
 shader_parameter/beam_sharpness = 10.0
 shader_parameter/rotation_speed = 0.2
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tlwt5"]
-texture = ExtResource("3_tlwt5")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mmdvd"]
+texture = ExtResource("4_h5o24")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -23,7 +23,7 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_fj7yv"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
-sources/1 = SubResource("TileSetAtlasSource_tlwt5")
+sources/0 = SubResource("TileSetAtlasSource_mmdvd")
 
 [node name="World" type="Control" unique_id=537833106]
 layout_mode = 3
@@ -46,7 +46,7 @@ grow_vertical = 2
 color = Color(0.15525219, 0.22029793, 0.2134858, 1)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=827048682]
-tile_map_data = PackedByteArray("AAADAAoAAQAAAAAAAAAEAAoAAQAAAAAAAAAFAAoAAQAAAAAAAAAGAAoAAQAAAAAAAAAHAAoAAQAAAAAAAAAIAAoAAQAAAAAAAAAJAAoAAQAAAAAAAAAKAAoAAQAAAAAAAAALAAoAAQAAAAAAAAAMAAoAAQAAAAAAAAANAAoAAQAAAAAAAAAQAAoAAQAAAAAAAAAPAAoAAQAAAAAAAAAOAAoAAQAAAAAAAAAGAAYAAQAAAAAAAAAHAAYAAQAAAAAAAAAIAAYAAQAAAAAAAAALAAYAAQAAAAAAAAAMAAYAAQAAAAAAAAANAAYAAQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAADAAoAAAAAAAAAAAAEAAoAAAAAAAAAAAAFAAoAAAAAAAAAAAAGAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAAKAAoAAAAAAAAAAAALAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAANAAoAAAAAAAAAAAAQAAoAAAAAAAAAAAAPAAoAAAAAAAAAAAAOAAoAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_fj7yv")
 
 [node name="SpawnPoints" type="Node" parent="." unique_id=759238716]
