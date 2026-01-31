@@ -1,5 +1,7 @@
 class_name Guy extends CharacterBody2D
 
+enum Facing {LEFT, RIGHT}
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
@@ -7,6 +9,8 @@ const JUMP_VELOCITY = -400.0
 
 ## If zero, I am not being pushed
 var push_vector := Vector2.ZERO
+
+var _facing := Facing.RIGHT
 
 @onready var _horizontal_push_center_x : float = %HorizontalPush.position.x
 
@@ -20,17 +24,18 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 			
-		# Get the input direction and handle the movement/deceleration.
-		# As good practice, you should replace UI actions with custom gameplay actions.
-		
 		var direction := Input.get_axis("p%d_left" % player_number, "p%d_right" % player_number)
 		if direction:
 			velocity.x = direction * SPEED
+			# Face the direction of the input.
+			# It has to be negative or positive here since we are inside the conditional.
+			_facing = Facing.LEFT if direction < 0 else Facing.RIGHT
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
+		
 
 		%HorizontalPush.monitoring = Input.is_action_pressed("p%d_action" % player_number)
-		%HorizontalPush.position.x = _horizontal_push_center_x * (-1 if direction < 0 else 1)
+		%HorizontalPush.position.x = _horizontal_push_center_x * (-1 if _facing==Facing.LEFT else 1)
 	else:
 		velocity.x = push_vector.x * SPEED
 
