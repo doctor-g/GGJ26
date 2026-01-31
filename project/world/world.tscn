@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://bypkvebwkw7mj" path="res://world/background.gdshader" id="3_h5o24"]
 [ext_resource type="Texture2D" uid="uid://42pveew777ho" path="res://world/tile_mexican.png" id="4_h5o24"]
 [ext_resource type="AudioStream" uid="uid://dggvakuker1ij" path="res://world/player_die.wav" id="5_mmdvd"]
+[ext_resource type="AudioStream" uid="uid://cqwc38qvl3n05" path="res://world/tada.wav" id="6_fn3g3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mmdvd"]
 shader = ExtResource("3_h5o24")
@@ -97,3 +98,7 @@ wait_time = 5.0
 [node name="PlayerDiedSound" type="AudioStreamPlayer" parent="." unique_id=1063837578]
 unique_name_in_owner = true
 stream = ExtResource("5_mmdvd")
+
+[node name="WinSound" type="AudioStreamPlayer" parent="." unique_id=1607447163]
+unique_name_in_owner = true
+stream = ExtResource("6_fn3g3")

@@ -23,9 +23,7 @@ func _ready() -> void:
 		lives_control.player = player
 		lives_control.number= i + 1
 		%LivesBox.add_child(lives_control)
-	
-	var spawn_points := %SpawnPoints.get_children()
-	for i in spawn_points.size():
+		
 		_spawn_guy(i)
 
 
@@ -63,6 +61,7 @@ func _check_for_game_end() -> void:
 
 
 func _on_game_over(winner:Player) -> void:
+	%WinSound.play()
 	var index = _players.find(winner)
 	%WinnerLabel.text = "Player %d Wins!" % (index+1)
 	%WinnerLabel.visible = true
