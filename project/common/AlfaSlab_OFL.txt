@@ -1,6 +1,4 @@
-Copyright (c) 2011 Johan Kallas (johankallas@gmail.com), 
-Copyright (c) 2011 Mihkel Virkus (mihkelvirkus@gmail.com), 
-with Reserved Font Name Ewert.
+Copyright 2016 The Alfa Slab One Project Authors (http://www.jmsole.cl | info@jmsole.cl), with Reserved Font Name "Alfa Slab".
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:

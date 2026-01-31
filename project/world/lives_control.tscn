@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://btamdj4hwyusr"]
 
+[ext_resource type="FontFile" uid="uid://on6p4kdxfsgx" path="res://common/AlfaSlabOne-Regular.ttf" id="1_ifdph"]
 [ext_resource type="Script" uid="uid://d0jxad70w1l7l" path="res://world/lives_control.gd" id="1_rmvx3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g8cn0"]
+font = ExtResource("1_ifdph")
 
 [node name="LivesControl" type="Label" unique_id=883100199]
 anchors_preset = 15
@@ -10,5 +14,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 text = "Player N: 0"
+label_settings = SubResource("LabelSettings_g8cn0")
 horizontal_alignment = 1
 script = ExtResource("1_rmvx3")

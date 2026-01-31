@@ -1,13 +1,21 @@
 [gd_scene format=3 uid="uid://ds8hankrr1tdv"]
 
 [ext_resource type="Script" uid="uid://b1xvdii01tio2" path="res://title/title.gd" id="1_crako"]
-[ext_resource type="FontFile" uid="uid://bpolgp4yyh1ii" path="res://title/Ewert-Regular.ttf" id="1_yx5l7"]
 [ext_resource type="PackedScene" uid="uid://dms4hsr1b1uh1" path="res://world/world.tscn" id="2_nx56k"]
+[ext_resource type="FontFile" uid="uid://b55vpexjsg1ul" path="res://title/Rye-Regular.ttf" id="3_nx56k"]
+[ext_resource type="FontFile" uid="uid://on6p4kdxfsgx" path="res://common/AlfaSlabOne-Regular.ttf" id="4_6s8lb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_crako"]
-font = ExtResource("1_yx5l7")
+font = ExtResource("3_nx56k")
 font_size = 96
 font_color = Color(1, 0.6509804, 0.18039216, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8xu2e"]
+font = ExtResource("4_6s8lb")
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_0tjwc"]
+font = ExtResource("4_6s8lb")
 
 [node name="Title" type="Control" unique_id=1130191881]
 layout_mode = 3
@@ -42,9 +50,10 @@ offset_right = 411.5
 offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Shove Off!"
+text = "Shove off!"
 label_settings = SubResource("LabelSettings_crako")
 horizontal_alignment = 1
+uppercase = true
 
 [node name="Label" type="Label" parent="." unique_id=441058764]
 layout_mode = 1
@@ -53,13 +62,32 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -80.5
-offset_top = 46.0
-offset_right = 80.5
-offset_bottom = 69.0
+offset_left = -161.5
+offset_top = 63.5
+offset_right = 161.5
+offset_bottom = 103.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Press START to begin"
+label_settings = SubResource("LabelSettings_8xu2e")
+
+[node name="Label2" type="Label" parent="." unique_id=24919849]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -174.5
+offset_top = 126.0
+offset_right = 174.5
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Global Game Jam 2026
+A Game by Paul, Leo, Cristian, and Daniel"
+label_settings = SubResource("LabelSettings_0tjwc")
+horizontal_alignment = 1
 
 [node name="ColorFlashTimer" type="Timer" parent="." unique_id=289916302]
 wait_time = 0.2

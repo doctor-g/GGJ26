@@ -2,18 +2,18 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bpolgp4yyh1ii"
-path="res://.godot/imported/Ewert-Regular.ttf-ffbb4fc48d5387638fdb340a756d7468.fontdata"
+uid="uid://on6p4kdxfsgx"
+path="res://.godot/imported/AlfaSlabOne-Regular.ttf-c46110bcd093d058e74ffedab19c3eef.fontdata"
 
 [deps]
 
-source_file="res://title/Ewert-Regular.ttf"
-dest_files=["res://.godot/imported/Ewert-Regular.ttf-ffbb4fc48d5387638fdb340a756d7468.fontdata"]
+source_file="res://common/AlfaSlabOne-Regular.ttf"
+dest_files=["res://.godot/imported/AlfaSlabOne-Regular.ttf-c46110bcd093d058e74ffedab19c3eef.fontdata"]
 
 [params]
 
 Rendering=null
-antialiasing=1
+antialiasing=2
 generate_mipmaps=false
 disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false

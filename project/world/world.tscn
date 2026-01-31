@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://bypkvebwkw7mj" path="res://world/background.gdshader" id="3_h5o24"]
 [ext_resource type="Texture2D" uid="uid://42pveew777ho" path="res://world/tile_mexican.png" id="4_h5o24"]
 [ext_resource type="AudioStream" uid="uid://dggvakuker1ij" path="res://world/player_die.wav" id="5_mmdvd"]
+[ext_resource type="FontFile" uid="uid://on6p4kdxfsgx" path="res://common/AlfaSlabOne-Regular.ttf" id="5_sc4t8"]
 [ext_resource type="AudioStream" uid="uid://cqwc38qvl3n05" path="res://world/tada.wav" id="6_fn3g3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mmdvd"]
@@ -26,6 +27,10 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_mmdvd")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ai45w"]
+font = ExtResource("5_sc4t8")
+font_size = 24
 
 [node name="World" type="Control" unique_id=537833106]
 layout_mode = 3
@@ -89,6 +94,7 @@ offset_bottom = -68.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Player N Wins!"
+label_settings = SubResource("LabelSettings_ai45w")
 horizontal_alignment = 1
 
 [node name="ReplayTimer" type="Timer" parent="." unique_id=1194849527]
