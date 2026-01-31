@@ -7,13 +7,17 @@ enum Facing {LEFT, RIGHT}
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -500.0
+const PUSH_STRENGTH := 300.0
+const PUSH_DECAY := 10.0
+## How much upward velocity to add when pushing from the air.
+const PUSH_UPWARD_VELOCITY := JUMP_VELOCITY / 2
 ## How long the push effect moves the target and removes its ability to control itself.
 const PUSH_EFFECT_DURATION := 0.3
 
 @export var player_index := 0
 
-## If zero, I am not being pushed
-var push_vector := Vector2.ZERO
+## If stunned, I am being pushed and cannot do anything.
+var stunned := false
 
 var _facing := Facing.RIGHT
 
@@ -26,8 +30,13 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# If not being pushed, the player has control of the character.
-	if push_vector==Vector2.ZERO:
+	if stunned:
+		# No player controls while stunned.
+		# Just reduce horizontal velocity by "friction" amount if on ground
+		if is_on_floor():
+			velocity.x = move_toward(velocity.x, 0, PUSH_DECAY)
+		
+	else:
 		# Handle jump.
 		if Input.is_action_just_pressed("p%d_jump" % player_index) and is_on_floor():
 			velocity.y = JUMP_VELOCITY
@@ -57,17 +66,24 @@ func _physics_process(delta: float) -> void:
 		# Adjust the position of the collision areas based on facing.
 		%HorizontalPush.position.x = _horizontal_push_center_x * (-1 if _facing==Facing.LEFT else 1)
 		%JumpingPush.position.x = _jumping_push_center_x * (-1 if _facing==Facing.LEFT else 1)
-	else:
-		velocity.x = push_vector.x * SPEED
 
 	move_and_slide()
 
 
 func _on_horizontal_push_body_entered(body: Node2D) -> void:
 	if body is Guy and body != self and is_instance_valid(body):
-		body.push_vector = Vector2.RIGHT if _facing==Facing.RIGHT else Vector2.LEFT
-		await get_tree().create_timer(PUSH_EFFECT_DURATION).timeout
-		body.push_vector = Vector2.ZERO
+		_push(body)
+
+func _push(target:Guy) -> void:
+	target.stunned = true
+	if _facing==Facing.LEFT:
+		target.velocity.x = -PUSH_STRENGTH
+	else:
+		target.velocity.x = PUSH_STRENGTH
+	if not is_on_floor():
+		target.velocity.y = PUSH_UPWARD_VELOCITY
+	await get_tree().create_timer(PUSH_EFFECT_DURATION).timeout
+	target.stunned = false
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
@@ -76,7 +92,4 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 func _on_jumping_push_body_entered(body: Node2D) -> void:
 	if body is Guy and body != self and is_instance_valid(body):
-		body.push_vector = Vector2.RIGHT if _facing==Facing.RIGHT else Vector2.LEFT
-		body.velocity.y = JUMP_VELOCITY / 2 # Heuristic
-		await get_tree().create_timer(PUSH_EFFECT_DURATION).timeout
-		body.push_vector = Vector2.ZERO
+		_push(body)
