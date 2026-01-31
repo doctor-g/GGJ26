@@ -132,7 +132,9 @@ func _push(target:Guy) -> void:
 	if not is_on_floor():
 		target.velocity.y = PUSH_UPWARD_VELOCITY
 	await get_tree().create_timer(PUSH_EFFECT_DURATION).timeout
-	target.stunned = false
+	# If the target fell off the world, he won't be valid to un-stun.
+	if is_instance_valid(target):
+		target.stunned = false
 
 
 func _on_push_cooldown_timeout() -> void:

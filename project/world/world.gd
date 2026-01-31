@@ -66,5 +66,6 @@ func _check_for_game_end() -> void:
 
 func _on_game_over(winner:Player) -> void:
 	var index = _players.find(winner)
-	print("Winner is player %d" % index)
+	%WinnerLabel.text = "Player %d Wins!" % (_players.find(winner)+1)
+	%WinnerLabel.visible = true
 	
