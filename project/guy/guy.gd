@@ -3,7 +3,7 @@ class_name Guy extends CharacterBody2D
 enum Facing {LEFT, RIGHT}
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -500.0
 ## How long the push effect moves the target and removes its ability to control itself.
 const PUSH_EFFECT_DURATION := 0.3
 
