@@ -18,17 +18,20 @@ sources/1 = SubResource("TileSetAtlasSource_tlwt5")
 
 [node name="World" type="Node2D" unique_id=753451201]
 script = ExtResource("1_fj7yv")
+guy_scene = ExtResource("1_f3sb7")
 
 [node name="InputInitializer" type="Node" parent="." unique_id=400651824]
 script = ExtResource("2_aqk2v")
 
-[node name="Guy0" parent="." unique_id=868721283 instance=ExtResource("1_f3sb7")]
-position = Vector2(111, 309)
-
-[node name="Guy1" parent="." unique_id=195437071 instance=ExtResource("1_f3sb7")]
-position = Vector2(357, 307)
-player_index = 1
-
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=827048682]
 tile_map_data = PackedByteArray("AAADAAoAAQAAAAAAAAAEAAoAAQAAAAAAAAAFAAoAAQAAAAAAAAAGAAoAAQAAAAAAAAAHAAoAAQAAAAAAAAAIAAoAAQAAAAAAAAAJAAoAAQAAAAAAAAAKAAoAAQAAAAAAAAALAAoAAQAAAAAAAAAMAAoAAQAAAAAAAAANAAoAAQAAAAAAAAAQAAoAAQAAAAAAAAAPAAoAAQAAAAAAAAAOAAoAAQAAAAAAAAAGAAYAAQAAAAAAAAAHAAYAAQAAAAAAAAAIAAYAAQAAAAAAAAALAAYAAQAAAAAAAAAMAAYAAQAAAAAAAAANAAYAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_fj7yv")
+
+[node name="SpawnPoints" type="Node" parent="." unique_id=759238716]
+unique_name_in_owner = true
+
+[node name="SpawnPoint" type="Marker2D" parent="SpawnPoints" unique_id=445113725]
+position = Vector2(268, 317)
+
+[node name="SpawnPoint2" type="Marker2D" parent="SpawnPoints" unique_id=1972516659]
+position = Vector2(379, 317)

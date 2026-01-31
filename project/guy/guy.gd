@@ -1,5 +1,8 @@
 class_name Guy extends CharacterBody2D
 
+## Emitted when this guy falls off the edge of the world or otherwise dies.
+signal died
+
 enum Facing {LEFT, RIGHT}
 
 const SPEED = 300.0
@@ -68,8 +71,7 @@ func _on_horizontal_push_body_entered(body: Node2D) -> void:
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	print("dead")
-	queue_free()
+	died.emit()
 
 
 func _on_jumping_push_body_entered(body: Node2D) -> void:
