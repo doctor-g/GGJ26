@@ -11,4 +11,7 @@ func _ready() -> void:
 	
 
 func _update_text() -> void:
-	text = "Player %d: %d" % [number, player.lives]
+	var dots := ""
+	for i in player.lives:
+		dots += "★"
+	text = "Player %d\n%s" % [number, dots]
