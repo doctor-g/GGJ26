@@ -17,6 +17,7 @@ position = Vector2(112, 322)
 
 [node name="Guy2" parent="." unique_id=195437071 instance=ExtResource("1_f3sb7")]
 position = Vector2(358, 320)
+player_number = 2
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1709563136]
 
