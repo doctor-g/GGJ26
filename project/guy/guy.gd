@@ -7,7 +7,7 @@ const JUMP_VELOCITY = -400.0
 ## How long the push effect moves the target and removes its ability to control itself.
 const PUSH_EFFECT_DURATION := 0.3
 
-@export var player_number := 1
+@export var player_index := 0
 
 ## If zero, I am not being pushed
 var push_vector := Vector2.ZERO
@@ -18,7 +18,6 @@ var _facing := Facing.RIGHT
 @onready var _horizontal_push_center_x : float = %HorizontalPush.position.x
 @onready var _jumping_push_center_x : float = %JumpingPush.position.x
 
-
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -27,10 +26,10 @@ func _physics_process(delta: float) -> void:
 	# If not being pushed, the player has control of the character.
 	if push_vector==Vector2.ZERO:
 		# Handle jump.
-		if Input.is_action_just_pressed("p%d_jump" % player_number) and is_on_floor():
+		if Input.is_action_just_pressed("p%d_jump" % player_index) and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 			
-		var direction := Input.get_axis("p%d_left" % player_number, "p%d_right" % player_number)
+		var direction := Input.get_axis("p%d_left" % player_index, "p%d_right" % player_index)
 		if direction:
 			velocity.x = direction * SPEED
 			# Face the direction of the input.
@@ -44,7 +43,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 
-		var is_pushing := Input.is_action_pressed("p%d_action" % player_number)
+		var is_pushing := Input.is_action_pressed("p%d_action" % player_index)
 		if is_on_floor():
 			%HorizontalPush.monitoring = is_pushing
 			%JumpingPush.monitoring = false
