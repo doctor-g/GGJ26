@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
 	# If not being pushed, the player has control of the character.
 	if push_vector==Vector2.ZERO:
 		# Handle jump.
-		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		if Input.is_action_just_pressed("p%d_jump" % player_number) and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 			
 		var direction := Input.get_axis("p%d_left" % player_number, "p%d_right" % player_number)
