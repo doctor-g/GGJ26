@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dabq7kj46qdkc"]
+
+[ext_resource type="AudioStream" uid="uid://dsyeewta55vg4" path="res://common/faceoff.mp3" id="1_6lxwy"]
+
+[node name="Jukebox" type="AudioStreamPlayer" unique_id=564533275]
+stream = ExtResource("1_6lxwy")
+autoplay = true
