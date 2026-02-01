@@ -5,6 +5,8 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_g8cn0"]
 font = ExtResource("1_ifdph")
+outline_size = 2
+outline_color = Color(0.27996668, 0.2799667, 0.27996668, 1)
 
 [node name="LivesControl" type="Label" unique_id=883100199]
 anchors_preset = 15
