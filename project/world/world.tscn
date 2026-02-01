@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bchk8uca8q32o" path="res://guy/guy.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://ya0xbplcljk6" path="res://world/world.gd" id="1_fj7yv"]
 [ext_resource type="Shader" uid="uid://bypkvebwkw7mj" path="res://world/background.gdshader" id="3_h5o24"]
-[ext_resource type="Texture2D" uid="uid://42pveew777ho" path="res://world/tile_mexican.png" id="4_h5o24"]
+[ext_resource type="Texture2D" uid="uid://cfpa8l753qfvo" path="res://world/tile_mexican_new.png" id="4_sc4t8"]
 [ext_resource type="AudioStream" uid="uid://dggvakuker1ij" path="res://world/player_die.wav" id="5_mmdvd"]
 [ext_resource type="FontFile" uid="uid://on6p4kdxfsgx" path="res://common/AlfaSlabOne-Regular.ttf" id="5_sc4t8"]
 [ext_resource type="AudioStream" uid="uid://cqwc38qvl3n05" path="res://world/tada.wav" id="6_fn3g3"]
@@ -18,7 +18,7 @@ shader_parameter/beam_sharpness = 10.0
 shader_parameter/rotation_speed = 0.2
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mmdvd"]
-texture = ExtResource("4_h5o24")
+texture = ExtResource("4_sc4t8")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)

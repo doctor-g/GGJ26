@@ -13,7 +13,7 @@ const PUSH_DECAY := 10.0
 ## How much upward velocity to add when pushing from the air.
 const PUSH_UPWARD_VELOCITY := JUMP_VELOCITY / 2
 ## How long the push effect moves the target and removes its ability to control itself.
-const PUSH_EFFECT_DURATION := 0.3
+const PUSH_EFFECT_DURATION := 0.5
 
 @export var player_index := 0
 

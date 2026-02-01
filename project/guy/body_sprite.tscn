@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dm8uom6ics47q"]
 
-[ext_resource type="Texture2D" uid="uid://csl2gt2v4y6w4" path="res://guy/guy_idle.png" id="1_1h6ef"]
+[ext_resource type="Texture2D" uid="uid://b3gpguuuwx0o4" path="res://guy/guy_idle_luchador.png" id="1_srdcs"]
 [ext_resource type="Texture2D" uid="uid://fha5thbiw2tn" path="res://guy/guy_jump.png" id="2_srdcs"]
 [ext_resource type="Texture2D" uid="uid://f6a5gsdnq72v" path="res://guy/guy_shove.png" id="3_srdcs"]
 [ext_resource type="Texture2D" uid="uid://br1tlahixsrui" path="res://guy/guy_shoved.png" id="4_srdcs"]
@@ -50,7 +50,7 @@ region = Rect2(32, 20, 16, 20)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_1h6ef")
+"texture": ExtResource("1_srdcs")
 }],
 "loop": true,
 "name": &"idle",
@@ -114,5 +114,5 @@ animations = [{
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ynse4")
-animation = &"shoved_front"
+animation = &"idle"
 autoplay = "idle"
