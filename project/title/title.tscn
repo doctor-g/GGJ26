@@ -6,9 +6,7 @@
 [ext_resource type="FontFile" uid="uid://on6p4kdxfsgx" path="res://common/AlfaSlabOne-Regular.ttf" id="4_6s8lb"]
 [ext_resource type="Texture2D" uid="uid://c2sijstmpfqas" path="res://guy/mask_green.png" id="5_cvhyk"]
 [ext_resource type="Texture2D" uid="uid://x1l0cyaqtdcw" path="res://guy/mask_red.png" id="6_vxeqy"]
-[ext_resource type="Texture2D" uid="uid://ctu8e6rxfwtxf" path="res://guy/guy_win_pose.png" id="7_3l5ow"]
 [ext_resource type="Texture2D" uid="uid://cceen7ysdk5xl" path="res://guy/mask_yellow.png" id="8_bqme7"]
-[ext_resource type="Texture2D" uid="uid://ct6swr824i68h" path="res://guy/guy_shoved.png" id="9_y1ss2"]
 [ext_resource type="Texture2D" uid="uid://dx0dmfo8mmr8b" path="res://guy/mask_blue.png" id="10_5bniv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_crako"]
@@ -101,39 +99,26 @@ autostart = true
 
 [node name="MaskGreen" type="Sprite2D" parent="." unique_id=1891811435]
 texture_filter = 1
-position = Vector2(72, 48)
+position = Vector2(84, 58)
 scale = Vector2(5, 5)
 texture = ExtResource("5_cvhyk")
 
 [node name="MaskRed" type="Sprite2D" parent="." unique_id=754680815]
 texture_filter = 1
-position = Vector2(576, 288)
+position = Vector2(560.00006, 295)
 scale = Vector2(5, 5)
 texture = ExtResource("6_vxeqy")
 flip_h = true
 
-[node name="GuyWinPose" type="Sprite2D" parent="." unique_id=2032353496]
-texture_filter = 1
-position = Vector2(192, 215.99998)
-scale = Vector2(5, 5)
-texture = ExtResource("7_3l5ow")
-
 [node name="MaskYellow" type="Sprite2D" parent="." unique_id=1523013045]
 texture_filter = 1
-position = Vector2(192, 152)
+position = Vector2(84, 295)
 scale = Vector2(5, 5)
 texture = ExtResource("8_bqme7")
 
-[node name="GuyShoved(1)" type="Sprite2D" parent="." unique_id=2077853117]
-texture_filter = 1
-position = Vector2(424, 224)
-scale = Vector2(5, 5)
-texture = ExtResource("9_y1ss2")
-flip_h = true
-
 [node name="MaskBlue" type="Sprite2D" parent="." unique_id=453305258]
 texture_filter = 1
-position = Vector2(424, 160)
+position = Vector2(560.00006, 58.000008)
 scale = Vector2(5, 5)
 texture = ExtResource("10_5bniv")
 flip_h = true
