@@ -67,7 +67,8 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		_body_sprite.play(&"jump")
+		if not _pushing:
+			_body_sprite.play(&"jump")
 
 	if stunned:
 		_body_sprite.play(&"shoved_front")
@@ -119,7 +120,10 @@ func _physics_process(delta: float) -> void:
 		# Handle attack action
 		if Input.is_action_just_pressed("p%d_action" % player_index) and not _pushing:
 			_pushing = true
-			_body_sprite.play(&"push")
+			if is_on_floor():
+				_body_sprite.play(&"push")
+			else:
+				_body_sprite.play(&"push_airborne")
 			
 			if fireballs > 0:
 				%ShootFireballSound.play()

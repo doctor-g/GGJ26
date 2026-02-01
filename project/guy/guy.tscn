@@ -17,7 +17,7 @@
 radius = 15.0
 height = 64.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5iccb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0qdq6"]
 resource_local_to_scene = true
 shader = ExtResource("3_jtfwu")
 shader_parameter/origin = Color(1, 1, 1, 1)
@@ -105,7 +105,7 @@ shape = SubResource("CapsuleShape2D_jtfwu")
 
 [node name="BodySprite" parent="." unique_id=324161803 instance=ExtResource("2_vupqh")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_5iccb")
+material = SubResource("ShaderMaterial_0qdq6")
 position = Vector2(0, -20)
 
 [node name="HeadSprite" type="Sprite2D" parent="." unique_id=2117563986]
