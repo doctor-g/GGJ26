@@ -1,7 +1,7 @@
 extends Control
 
-const MAX_PLAYERS := 2
-const MAX_LIVES := 1
+const MAX_PLAYERS := 4
+const MAX_LIVES := 3
 
 ## How many seconds to wait before starting the next round
 const TIME_BETWEEN_GAMES := 3.5
