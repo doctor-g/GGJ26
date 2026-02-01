@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://fha5thbiw2tn" path="res://guy/guy_jump.png" id="2_srdcs"]
 [ext_resource type="Texture2D" uid="uid://f6a5gsdnq72v" path="res://guy/guy_shove.png" id="3_srdcs"]
 [ext_resource type="Texture2D" uid="uid://ct6swr824i68h" path="res://guy/guy_shoved.png" id="4_srdcs"]
-[ext_resource type="Texture2D" uid="uid://2oiqr1nm0ey6" path="res://guy/guy_shove_airborne.png" id="4_sriu0"]
+[ext_resource type="Texture2D" uid="uid://dpljeinsgu6eh" path="res://guy/guy_shove_airborne.png" id="4_sriu0"]
 [ext_resource type="Texture2D" uid="uid://bshvcgr3bnxcg" path="res://guy/guy_walk.png" id="5_srdcs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sqby2"]
