@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct6swr824i68h"
-path="res://.godot/imported/guy_shoved (1).png-5e49342180e0a7af46317acf9859cf58.ctex"
+uid="uid://bwa46vagyi7ho"
+path="res://.godot/imported/fireball.png-5297a7d24021a376e9125187e967aefb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://guy/guy_shoved (1).png"
-dest_files=["res://.godot/imported/guy_shoved (1).png-5e49342180e0a7af46317acf9859cf58.ctex"]
+source_file="res://guy/fireball.png"
+dest_files=["res://.godot/imported/fireball.png-5297a7d24021a376e9125187e967aefb.ctex"]
 
 [params]
 
