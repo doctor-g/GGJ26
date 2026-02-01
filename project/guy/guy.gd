@@ -17,6 +17,7 @@ const PUSH_EFFECT_DURATION := 0.5
 
 @export var fireball_scene : PackedScene
 @export var fireball_death_stream : AudioStream
+@export var fiery_death_scene : PackedScene
 @export var player_index := 0
 
 var color : Color
@@ -178,6 +179,10 @@ func _on_visual_animation_finished() -> void:
 
 
 func kill() -> void:
+	var fiery_death : Node2D = fiery_death_scene.instantiate()
+	fiery_death.global_position = global_position
+	add_sibling(fiery_death) 
+	
 	var impact_sound := AudioStreamPlayer.new()
 	add_sibling(impact_sound)
 	impact_sound.stream = fireball_death_stream

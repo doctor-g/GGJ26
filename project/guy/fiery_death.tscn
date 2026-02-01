@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://sntx6qw5qli5"]
+
+[ext_resource type="Script" uid="uid://dbbyaaadupxyl" path="res://guy/fiery_death.gd" id="1_lhdnr"]
+[ext_resource type="Texture2D" uid="uid://cvjmqvrm5fmhb" path="res://guy/explosion.png" id="1_y376r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhdnr"]
+atlas = ExtResource("1_y376r")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvn67"]
+atlas = ExtResource("1_y376r")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0qui"]
+atlas = ExtResource("1_y376r")
+region = Rect2(0, 64, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jmv3a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhdnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvn67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0qui")
+}],
+"loop": false,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="FieryDeath" type="Node2D" unique_id=1687334642]
+script = ExtResource("1_lhdnr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=159503272]
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_jmv3a")
+autoplay = "default"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

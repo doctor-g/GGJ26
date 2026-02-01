@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dm8uom6ics47q" path="res://guy/body_sprite.tscn" id="2_vupqh"]
 [ext_resource type="AudioStream" uid="uid://dxhgbmrfvbfv6" path="res://guy/fireball_impact.wav" id="3_5iccb"]
 [ext_resource type="Shader" uid="uid://bn521wm6yugko" path="res://guy/body.gdshader" id="3_jtfwu"]
+[ext_resource type="PackedScene" uid="uid://sntx6qw5qli5" path="res://guy/fiery_death.tscn" id="4_0qdq6"]
 [ext_resource type="Texture2D" uid="uid://x1l0cyaqtdcw" path="res://guy/mask_red.png" id="5_6ukov"]
 [ext_resource type="Texture2D" uid="uid://d1lay4siy7s15" path="res://guy/guy_attack.png" id="5_a17s0"]
 [ext_resource type="Shader" uid="uid://bkf6gxmu5bopx" path="res://guy/head.gdshader" id="5_kijpv"]
@@ -96,6 +97,7 @@ size = Vector2(64, 32)
 script = ExtResource("1_o5w3i")
 fireball_scene = ExtResource("2_6ukov")
 fireball_death_stream = ExtResource("3_5iccb")
+fiery_death_scene = ExtResource("4_0qdq6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1363029511]
 position = Vector2(0, -32)
