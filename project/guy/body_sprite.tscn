@@ -114,6 +114,5 @@ animations = [{
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ynse4")
-animation = &"push"
+animation = &"jump"
 autoplay = "idle"
-frame_progress = 0.67038405
