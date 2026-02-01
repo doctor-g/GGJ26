@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dl37dc0q7ps4u"]
 
-[ext_resource type="Texture2D" uid="uid://cftllq6l7xclt" path="res://icon.svg" id="1_os6x6"]
 [ext_resource type="Script" uid="uid://bn0h52at5naot" path="res://world/fireball_pickup.gd" id="1_pue4f"]
+[ext_resource type="Texture2D" uid="uid://c26fsltudgjgs" path="res://guy/fireball_sun.png" id="2_pue4f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iwxlk"]
 radius = 20.0
@@ -12,9 +12,9 @@ script = ExtResource("1_pue4f")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=294297696]
 shape = SubResource("CircleShape2D_iwxlk")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1252533654]
-position = Vector2(0.5, -0.5)
-scale = Vector2(0.2578125, 0.3046875)
-texture = ExtResource("1_os6x6")
+[node name="FireballSun" type="Sprite2D" parent="." unique_id=165118034]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_pue4f")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

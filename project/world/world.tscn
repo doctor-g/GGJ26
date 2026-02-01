@@ -116,7 +116,7 @@ stream = ExtResource("6_fn3g3")
 
 [node name="FireballPickupLocation" type="Marker2D" parent="." unique_id=895059931]
 unique_name_in_owner = true
-position = Vector2(317, 252)
+position = Vector2(320, 179)
 
 [node name="FireballSpawnTimer" type="Timer" parent="." unique_id=22318227]
 unique_name_in_owner = true
