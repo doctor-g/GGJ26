@@ -1,17 +1,31 @@
 extends Control
 
-const MAX_PLAYERS := 4
-const MAX_LIVES := 3
+const MAX_PLAYERS := 2
+const MAX_LIVES := 1
 
 ## How many seconds to wait before starting the next round
 const TIME_BETWEEN_GAMES := 3.5
+const BG_TWEEN_DURATION := 0.35
 
 @export var guy_scene : PackedScene
+@export var bg_color_1 : Color
+@export var bg_color_2 : Color
 
 var _players : Array[Player]
 
+## When there is a winner, it is this player. If null, the game is ongoing.
+var _winner : Player
+## Manages the background color transition when someone wins
+var _new_bg_color : Color
+
+@onready var _background := $Background
+
 
 func _ready() -> void:
+	# Set the background to the default colors at the start of the game.
+	_background.material.set_shader_parameter("color1", bg_color_1)
+	_background.material.set_shader_parameter("color2", bg_color_2)
+	
 	# Create the players
 	for i in MAX_PLAYERS:
 		var player := Player.new()
@@ -62,6 +76,13 @@ func _check_for_game_end() -> void:
 
 
 func _on_game_over(winner:Player) -> void:
+	_winner = winner
+	var bg_tween := create_tween()
+	bg_tween.tween_method(_tween_background("color1"),
+		bg_color_1, _winner.color, BG_TWEEN_DURATION)
+	bg_tween.parallel().tween_method(_tween_background("color2"),
+		bg_color_2, _winner.color.lightened(0.2), BG_TWEEN_DURATION)
+	
 	%WinSound.play()
 	var index = _players.find(winner)
 	%WinnerLabel.text = "Player %d Wins!" % (index+1)
@@ -70,3 +91,7 @@ func _on_game_over(winner:Player) -> void:
 		guy.active = false
 	await get_tree().create_timer(TIME_BETWEEN_GAMES).timeout
 	get_tree().reload_current_scene()
+
+
+func _tween_background(parameter_name : String) -> Callable:
+	return func(color:Color): _background.material.set_shader_parameter(parameter_name, color)

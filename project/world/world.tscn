@@ -10,8 +10,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mmdvd"]
 shader = ExtResource("3_h5o24")
-shader_parameter/color1 = Color(0.7384354, 0.45603102, 7.70092e-07, 1)
-shader_parameter/color2 = Color(0.6959734, 0.55809903, 0.1901029, 1)
+shader_parameter/color1 = Color(0.7372549, 0.45490196, 0, 1)
+shader_parameter/color2 = Color(0.69411767, 0.5568628, 0.1882353, 1)
 shader_parameter/center = Vector2(0.5, 0.5)
 shader_parameter/beam_count = 12.0
 shader_parameter/beam_sharpness = 10.0
@@ -41,6 +41,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fj7yv")
 guy_scene = ExtResource("1_f3sb7")
+bg_color_1 = Color(0.7372549, 0.45490196, 0, 1)
+bg_color_2 = Color(0.69411767, 0.5568628, 0.1882353, 1)
 
 [node name="Background" type="ColorRect" parent="." unique_id=2088785746]
 material = SubResource("ShaderMaterial_mmdvd")
