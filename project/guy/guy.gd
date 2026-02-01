@@ -32,7 +32,6 @@ var stunned := false
 var fireballs := 0:
 	set(value):
 		fireballs = value
-		print("Did i do it")
 		%HeadSprite.material.set_shader_parameter(&"enabled", fireballs > 0)
 
 ## If I am pushing, I cannot move left nor right
