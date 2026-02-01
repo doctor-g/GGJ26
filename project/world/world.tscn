@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://dggvakuker1ij" path="res://world/player_die.wav" id="5_mmdvd"]
 [ext_resource type="FontFile" uid="uid://on6p4kdxfsgx" path="res://common/AlfaSlabOne-Regular.ttf" id="5_sc4t8"]
 [ext_resource type="AudioStream" uid="uid://cqwc38qvl3n05" path="res://world/tada.wav" id="6_fn3g3"]
+[ext_resource type="PackedScene" uid="uid://dl37dc0q7ps4u" path="res://world/fireball_pickup.tscn" id="8_ai45w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mmdvd"]
 shader = ExtResource("3_h5o24")
@@ -41,6 +42,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fj7yv")
 guy_scene = ExtResource("1_f3sb7")
+fireball_pickup_scene = ExtResource("8_ai45w")
 bg_color_1 = Color(0.7372549, 0.45490196, 0, 1)
 bg_color_2 = Color(0.69411767, 0.5568628, 0.1882353, 1)
 
@@ -110,3 +112,12 @@ stream = ExtResource("5_mmdvd")
 [node name="WinSound" type="AudioStreamPlayer" parent="." unique_id=1607447163]
 unique_name_in_owner = true
 stream = ExtResource("6_fn3g3")
+
+[node name="FireballPickupLocation" type="Marker2D" parent="." unique_id=895059931]
+unique_name_in_owner = true
+position = Vector2(317, 252)
+
+[node name="FireballSpawnTimer" type="Timer" parent="." unique_id=22318227]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="FireballSpawnTimer" to="." method="_on_fireball_spawn_timer_timeout"]

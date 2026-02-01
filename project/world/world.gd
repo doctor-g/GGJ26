@@ -6,8 +6,10 @@ const MAX_LIVES := 3
 ## How many seconds to wait before starting the next round
 const TIME_BETWEEN_GAMES := 3.5
 const BG_TWEEN_DURATION := 0.35
+const TIME_BETWEEN_FIREBALL_PICKUPS := 7.0
 
 @export var guy_scene : PackedScene
+@export var fireball_pickup_scene : PackedScene
 @export var bg_color_1 : Color
 @export var bg_color_2 : Color
 
@@ -15,13 +17,13 @@ var _players : Array[Player]
 
 ## When there is a winner, it is this player. If null, the game is ongoing.
 var _winner : Player
-## Manages the background color transition when someone wins
-var _new_bg_color : Color
 
 @onready var _background := $Background
 
 
 func _ready() -> void:
+	%FireballSpawnTimer.start(TIME_BETWEEN_FIREBALL_PICKUPS)
+	
 	# Set the background to the default colors at the start of the game.
 	_background.material.set_shader_parameter("color1", bg_color_1)
 	_background.material.set_shader_parameter("color2", bg_color_2)
@@ -54,8 +56,13 @@ func _spawn_guy(index:int) -> void:
 		guy.queue_free()
 		_players[index].lives -= 1
 		if _players[index].lives > 0:
+			# Part of what the await does here is prevent 
+			# a problem where a guy is killed and respawned
+			# immediately while collisions with a fireball
+			# are still being processed
+			await get_tree().create_timer(0.5).timeout
 			_spawn_guy(index)
-		
+			
 		_check_for_game_end()
 	)
 	
@@ -95,3 +102,15 @@ func _on_game_over(winner:Player) -> void:
 
 func _tween_background(parameter_name : String) -> Callable:
 	return func(color:Color): _background.material.set_shader_parameter(parameter_name, color)
+
+
+func _on_fireball_spawn_timer_timeout() -> void:
+	if _winner == null and not _has_fireball_pickup():
+		var pickup : Node2D = fireball_pickup_scene.instantiate()
+		pickup.global_position = %FireballPickupLocation.global_position
+		add_child(pickup)
+		%FireballSpawnTimer.start(TIME_BETWEEN_FIREBALL_PICKUPS)
+
+
+func _has_fireball_pickup() -> bool:
+	return not get_tree().get_nodes_in_group(&"fireball_pickup").is_empty()

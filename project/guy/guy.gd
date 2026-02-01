@@ -15,6 +15,7 @@ const PUSH_UPWARD_VELOCITY := JUMP_VELOCITY / 2
 ## How long the push effect moves the target and removes its ability to control itself.
 const PUSH_EFFECT_DURATION := 0.5
 
+@export var fireball_scene : PackedScene
 @export var player_index := 0
 
 var color : Color
@@ -25,6 +26,13 @@ var active := true
 
 ## If stunned, I am being pushed and cannot do anything.
 var stunned := false
+
+## How many fireballs does this guy have left.
+var fireballs := 0:
+	set(value):
+		fireballs = value
+		print("Did i do it")
+		%HeadSprite.material.set_shader_parameter(&"enabled", fireballs > 0)
 
 ## If I am pushing, I cannot move left nor right
 var _pushing := false
@@ -94,6 +102,7 @@ func _physics_process(delta: float) -> void:
 				%HorizontalPush.position.x *= -1
 				%JumpingPush.position.x *= -1
 				%JumpingPush.rotation *= -1
+				%FireballStart.position.x *= -1
 				_horizontal_push_sprite.flip_h = _facing == Facing.LEFT
 				_jumping_push_sprite.flip_h = _facing == Facing.LEFT
 				_body_sprite.flip_h = _facing == Facing.LEFT
@@ -106,26 +115,36 @@ func _physics_process(delta: float) -> void:
 			if is_on_floor():
 				velocity.x = move_toward(velocity.x, 0, SPEED)
 
+		# Handle attack action
 		if Input.is_action_just_pressed("p%d_action" % player_index) and not _pushing:
 			_pushing = true
 			_body_sprite.play(&"push")
 			
-			# Adjust the position of the collision areas based on facing.
-			%HorizontalPush.position.x = _horizontal_push_center_x * (-1 if _facing==Facing.LEFT else 1)
-			%JumpingPush.position.x = _jumping_push_center_x * (-1 if _facing==Facing.LEFT else 1)
-			
-			# Show the correct push effect
-			if is_on_floor():
-				_horizontal_push_sprite.play()
-				%HorizontalPush.visible = true
+			if fireballs > 0:
+				var fireball : Fireball = fireball_scene.instantiate()
+				fireball.direction = Vector2.LEFT if _facing == Facing.LEFT else Vector2.RIGHT
+				fireball.shooter = self
+				fireball.global_position = %FireballStart.global_position
+				add_sibling(fireball)
+				fireballs -= 1
 			else:
-				_jumping_push_sprite.play()
-				%JumpingPush.visible = true
-			
-			var area:Area2D = %HorizontalPush if is_on_floor() else %JumpingPush
-			for body in area.get_overlapping_bodies():
-				if body != self and body is Guy and is_instance_valid(body):
-					_push(body)
+				
+				# Adjust the position of the collision areas based on facing.
+				%HorizontalPush.position.x = _horizontal_push_center_x * (-1 if _facing==Facing.LEFT else 1)
+				%JumpingPush.position.x = _jumping_push_center_x * (-1 if _facing==Facing.LEFT else 1)
+				
+				# Show the correct push effect
+				if is_on_floor():
+					_horizontal_push_sprite.play()
+					%HorizontalPush.visible = true
+				else:
+					_jumping_push_sprite.play()
+					%JumpingPush.visible = true
+				
+				var area:Area2D = %HorizontalPush if is_on_floor() else %JumpingPush
+				for body in area.get_overlapping_bodies():
+					if body != self and body is Guy and is_instance_valid(body):
+						_push(body)
 			
 			# Start the cooldown before the player can push again
 			%PushCooldown.start()
@@ -155,3 +174,7 @@ func _on_push_cooldown_timeout() -> void:
 func _on_visual_animation_finished() -> void:
 	%HorizontalPush.visible = false
 	%JumpingPush.visible = false
+
+
+func kill() -> void:
+	died.emit()

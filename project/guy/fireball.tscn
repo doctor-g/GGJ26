@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://goxuyps02dbk"]
+
+[ext_resource type="Script" uid="uid://tjg1yiqqc1og" path="res://guy/fireball.gd" id="1_4ossx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w0j11"]
+
+[node name="Fireball" type="Area2D" unique_id=183108066]
+script = ExtResource("1_4ossx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=204595000]
+shape = SubResource("CircleShape2D_w0j11")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=999226253]
+rect = Rect2(-16, -15, 32, 33)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
