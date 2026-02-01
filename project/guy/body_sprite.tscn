@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://fha5thbiw2tn" path="res://guy/guy_jump.png" id="2_srdcs"]
 [ext_resource type="Texture2D" uid="uid://f6a5gsdnq72v" path="res://guy/guy_shove.png" id="3_srdcs"]
 [ext_resource type="Texture2D" uid="uid://vukumxhkj1jt" path="res://guy/guy_shoved.png" id="4_srdcs"]
-[ext_resource type="Texture2D" uid="uid://pc8v7b2bkc7x" path="res://guy/guy_walk.png" id="5_srdcs"]
+[ext_resource type="Texture2D" uid="uid://bshvcgr3bnxcg" path="res://guy/guy_walk.png" id="5_srdcs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sqby2"]
 atlas = ExtResource("2_srdcs")
@@ -18,29 +18,25 @@ region = Rect2(0, 0, 16, 20)
 atlas = ExtResource("3_srdcs")
 region = Rect2(16, 0, 16, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_irk7y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_srdcs"]
 atlas = ExtResource("5_srdcs")
 region = Rect2(0, 0, 16, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n485r"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sriu0"]
 atlas = ExtResource("5_srdcs")
 region = Rect2(16, 0, 16, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0hekb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_irk7y"]
 atlas = ExtResource("5_srdcs")
 region = Rect2(32, 0, 16, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ton4c"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_n485r"]
 atlas = ExtResource("5_srdcs")
 region = Rect2(0, 20, 16, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ow1bb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hekb"]
 atlas = ExtResource("5_srdcs")
 region = Rect2(16, 20, 16, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7jgs8"]
-atlas = ExtResource("5_srdcs")
-region = Rect2(32, 20, 16, 20)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ynse4"]
 animations = [{
@@ -81,6 +77,12 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_srdcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sriu0")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_irk7y")
 }, {
 "duration": 1.0,
@@ -88,24 +90,16 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0hekb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ton4c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ow1bb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7jgs8")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="BodySprite" type="AnimatedSprite2D" unique_id=324161803]
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ynse4")
-animation = &"jump"
+animation = &"walk"
 autoplay = "idle"
+frame_progress = 0.5334211
