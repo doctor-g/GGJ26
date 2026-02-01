@@ -3,18 +3,20 @@
 [ext_resource type="Script" uid="uid://b7su6taplbutt" path="res://guy/guy.gd" id="1_o5w3i"]
 [ext_resource type="PackedScene" uid="uid://goxuyps02dbk" path="res://guy/fireball.tscn" id="2_6ukov"]
 [ext_resource type="PackedScene" uid="uid://dm8uom6ics47q" path="res://guy/body_sprite.tscn" id="2_vupqh"]
+[ext_resource type="AudioStream" uid="uid://dxhgbmrfvbfv6" path="res://guy/fireball_impact.wav" id="3_5iccb"]
 [ext_resource type="Shader" uid="uid://bn521wm6yugko" path="res://guy/body.gdshader" id="3_jtfwu"]
 [ext_resource type="Texture2D" uid="uid://x1l0cyaqtdcw" path="res://guy/mask_red.png" id="5_6ukov"]
 [ext_resource type="Texture2D" uid="uid://d1lay4siy7s15" path="res://guy/guy_attack.png" id="5_a17s0"]
 [ext_resource type="Shader" uid="uid://bkf6gxmu5bopx" path="res://guy/head.gdshader" id="5_kijpv"]
 [ext_resource type="AudioStream" uid="uid://b1p31ndf0sco2" path="res://guy/player_jump.wav" id="6_87sjq"]
 [ext_resource type="AudioStream" uid="uid://ngykwj27vw7p" path="res://guy/player_hit.wav" id="7_6ukov"]
+[ext_resource type="AudioStream" uid="uid://dra06230j68ug" path="res://guy/fireball_shoot.wav" id="10_7styy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jtfwu"]
 radius = 15.0
 height = 64.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kijpv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5iccb"]
 resource_local_to_scene = true
 shader = ExtResource("3_jtfwu")
 shader_parameter/origin = Color(1, 1, 1, 1)
@@ -93,6 +95,7 @@ size = Vector2(64, 32)
 [node name="Guy" type="CharacterBody2D" unique_id=868721283 groups=["guys"]]
 script = ExtResource("1_o5w3i")
 fireball_scene = ExtResource("2_6ukov")
+fireball_death_stream = ExtResource("3_5iccb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1363029511]
 position = Vector2(0, -32)
@@ -100,7 +103,7 @@ shape = SubResource("CapsuleShape2D_jtfwu")
 
 [node name="BodySprite" parent="." unique_id=324161803 instance=ExtResource("2_vupqh")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_kijpv")
+material = SubResource("ShaderMaterial_5iccb")
 position = Vector2(0, -20)
 
 [node name="HeadSprite" type="Sprite2D" parent="." unique_id=2117563986]
@@ -153,6 +156,10 @@ stream = ExtResource("6_87sjq")
 [node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=1519663803]
 unique_name_in_owner = true
 stream = ExtResource("7_6ukov")
+
+[node name="ShootFireballSound" type="AudioStreamPlayer" parent="." unique_id=1010729956]
+unique_name_in_owner = true
+stream = ExtResource("10_7styy")
 
 [node name="FireballStart" type="Marker2D" parent="." unique_id=222586175]
 unique_name_in_owner = true

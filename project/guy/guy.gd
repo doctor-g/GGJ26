@@ -16,6 +16,7 @@ const PUSH_UPWARD_VELOCITY := JUMP_VELOCITY / 2
 const PUSH_EFFECT_DURATION := 0.5
 
 @export var fireball_scene : PackedScene
+@export var fireball_death_stream : AudioStream
 @export var player_index := 0
 
 var color : Color
@@ -121,6 +122,7 @@ func _physics_process(delta: float) -> void:
 			_body_sprite.play(&"push")
 			
 			if fireballs > 0:
+				%ShootFireballSound.play()
 				var fireball : Fireball = fireball_scene.instantiate()
 				fireball.direction = Vector2.LEFT if _facing == Facing.LEFT else Vector2.RIGHT
 				fireball.shooter = self
@@ -177,4 +179,9 @@ func _on_visual_animation_finished() -> void:
 
 
 func kill() -> void:
+	var impact_sound := AudioStreamPlayer.new()
+	add_sibling(impact_sound)
+	impact_sound.stream = fireball_death_stream
+	impact_sound.finished.connect(impact_sound.queue_free)
+	impact_sound.play()
 	died.emit()

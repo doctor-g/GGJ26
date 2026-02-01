@@ -107,6 +107,7 @@ func _tween_background(parameter_name : String) -> Callable:
 func _on_fireball_spawn_timer_timeout() -> void:
 	if _winner == null and not _has_fireball_pickup():
 		var pickup : Node2D = fireball_pickup_scene.instantiate()
+		pickup.picked_up.connect(%FireballPickupSound.play)
 		pickup.global_position = %FireballPickupLocation.global_position
 		add_child(pickup)
 		%FireballSpawnTimer.start(TIME_BETWEEN_FIREBALL_PICKUPS)
