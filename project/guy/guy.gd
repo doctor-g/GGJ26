@@ -193,3 +193,7 @@ func kill() -> void:
 	impact_sound.finished.connect(impact_sound.queue_free)
 	impact_sound.play()
 	died.emit()
+
+
+func win() -> void:
+	_body_sprite.play("win")

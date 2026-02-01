@@ -79,11 +79,15 @@ func _check_for_game_end() -> void:
 	
 	# If only one person has lives, they are the winner
 	if someone_with_lives != null:
-		_on_game_over(someone_with_lives)
+		# Defer the call until after the dead guy has been removed
+		call_deferred(_on_game_over.get_method(), someone_with_lives)
 
 
 func _on_game_over(winner:Player) -> void:
 	_winner = winner
+	
+	get_tree().get_first_node_in_group("guys").win()
+	
 	var bg_tween := create_tween()
 	bg_tween.tween_method(_tween_background("color1"),
 		bg_color_1, _winner.color, BG_TWEEN_DURATION)

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ct6swr824i68h" path="res://guy/guy_shoved.png" id="4_srdcs"]
 [ext_resource type="Texture2D" uid="uid://dpljeinsgu6eh" path="res://guy/guy_shove_airborne.png" id="4_sriu0"]
 [ext_resource type="Texture2D" uid="uid://bshvcgr3bnxcg" path="res://guy/guy_walk.png" id="5_srdcs"]
+[ext_resource type="Texture2D" uid="uid://ctu8e6rxfwtxf" path="res://guy/guy_win_pose.png" id="7_sqby2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sqby2"]
 atlas = ExtResource("2_srdcs")
@@ -115,8 +116,11 @@ animations = [{
 "name": &"walk",
 "speed": 8.0
 }, {
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_sqby2")
+}],
+"loop": false,
 "name": &"win",
 "speed": 5.0
 }]
@@ -125,6 +129,5 @@ animations = [{
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ynse4")
-animation = &"push_airborne"
+animation = &"win"
 autoplay = "idle"
-frame_progress = 0.11612224
