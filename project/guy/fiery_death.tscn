@@ -36,6 +36,7 @@ animations = [{
 script = ExtResource("1_lhdnr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=159503272]
+texture_filter = 1
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_jmv3a")
 autoplay = "default"
