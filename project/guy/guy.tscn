@@ -163,7 +163,7 @@ stream = ExtResource("10_7styy")
 
 [node name="FireballStart" type="Marker2D" parent="." unique_id=222586175]
 unique_name_in_owner = true
-position = Vector2(16, -31)
+position = Vector2(16, -23)
 
 [connection signal="animation_finished" from="HorizontalPush/Visual" to="." method="_on_visual_animation_finished"]
 [connection signal="animation_finished" from="JumpingPush/Visual" to="." method="_on_visual_animation_finished"]
