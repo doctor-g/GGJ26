@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b3gpguuuwx0o4" path="res://guy/guy_idle_luchador.png" id="1_srdcs"]
 [ext_resource type="Texture2D" uid="uid://fha5thbiw2tn" path="res://guy/guy_jump.png" id="2_srdcs"]
 [ext_resource type="Texture2D" uid="uid://f6a5gsdnq72v" path="res://guy/guy_shove.png" id="3_srdcs"]
-[ext_resource type="Texture2D" uid="uid://vukumxhkj1jt" path="res://guy/guy_shoved.png" id="4_srdcs"]
+[ext_resource type="Texture2D" uid="uid://ct6swr824i68h" path="res://guy/guy_shoved (1).png" id="4_srdcs"]
 [ext_resource type="Texture2D" uid="uid://bshvcgr3bnxcg" path="res://guy/guy_walk.png" id="5_srdcs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sqby2"]
@@ -94,12 +94,16 @@ animations = [{
 "loop": true,
 "name": &"walk",
 "speed": 8.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"win",
+"speed": 5.0
 }]
 
 [node name="BodySprite" type="AnimatedSprite2D" unique_id=324161803]
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ynse4")
-animation = &"walk"
+animation = &"shoved_front"
 autoplay = "idle"
-frame_progress = 0.5334211
