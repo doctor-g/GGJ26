@@ -6,10 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://vukumxhkj1jt" path="res://guy/guy_shoved.png" id="4_srdcs"]
 [ext_resource type="Texture2D" uid="uid://pc8v7b2bkc7x" path="res://guy/guy_walk.png" id="5_srdcs"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sriu0"]
-atlas = ExtResource("2_srdcs")
-region = Rect2(16, 0, 16, 20)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_sqby2"]
 atlas = ExtResource("2_srdcs")
 region = Rect2(0, 20, 16, 20)
@@ -57,9 +53,6 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sriu0")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sqby2")
 }],
